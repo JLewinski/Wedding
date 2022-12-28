@@ -19,8 +19,9 @@
   "license": "GPL-3.0",
   "homepage": "https://github.com/jlewinski/wedding-site",
   "devDependencies": {
-    "del": "^7.0.0",
+    "@types/jquery": "^3.5.14",
     "gulp": "^4.0.2",
+    "gulp-clean": "^0.4.0",
     "gulp-cli": "^2.3.0",
     "gulp-sass": "^5.1.0",
     "gulp-sourcemaps": "^3.0.0",
@@ -33,6 +34,7 @@
     "webpack-stream": "^7.0.0"
   },
   "dependencies": {
-    "axios": "^1.2.0"
+    "axios": "^1.2.0",
+    "jquery": "^3.6.3"
   }
 }

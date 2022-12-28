@@ -25,4 +25,9 @@
     </Content>
   </ItemGroup>
 
+  <ItemGroup>
+    <Content Remove="wwwroot\src\**" />
+    <!-- <Compile Include="wwwroot\src\**" Watch="false"/> -->
+  </ItemGroup>
+
 </Project>
