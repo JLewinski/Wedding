@@ -44,13 +44,13 @@ window.addEventListener('scroll', () => {
     if (scrollOffset >= 20) {
         navBar.classList.add('fixed');
         header.style.borderBottom = 'none';
-        header.style.padding = '35px 0';
+        // header.style.padding = '35px 0';
         memberActions.style.top = '26px';
         // navIcon.style.top = '34px';
     } else {
         navBar?.classList.remove('fixed');
         header.style.borderBottom = 'solid 1px rgba(255, 255, 255, 0.2)';
-        header.style.padding = '50px 0';
+        // header.style.padding = '50px 0';
         memberActions.style.top = '41px';
         // navIcon.style.top = '48px';
     }
