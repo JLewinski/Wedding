@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -8,81 +8,44 @@
     @*<link rel="manifest" href="manifest.json">*@
     @*<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">*@
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/css/bootstrap.min.css" integrity="sha512-SbiR/eusphKoMVVXysTKG/7VseWii+Y3FdHrt0EpKgpToZeemhqHeZeLWLhJutz/2ut2Vw1uQEj2MbRF+TVBUA==" crossorigin="anonymous" referrerpolicy="no-referrer"
-          asp-fallback-href="~/lib/bootstrap/css/bootstrap.min.css"
-          asp-fallback-test-class="visually-hidden"
-          asp-fallback-test-property="position"
-          asp-fallback-test-value="absolute" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer"
-          asp-fallback-href="~/lib/font-awesome/css/all.min.css"
-          asp-fallback-test-class="fab"
-          asp-fallback-test-property="font-style"
-          asp-fallback-test-value="normal" />
-    <link rel="stylesheet" href="~/dist/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/css/bootstrap.min.css"
+        integrity="sha512-SbiR/eusphKoMVVXysTKG/7VseWii+Y3FdHrt0EpKgpToZeemhqHeZeLWLhJutz/2ut2Vw1uQEj2MbRF+TVBUA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" asp-fallback-href="~/lib/bootstrap/css/bootstrap.min.css"
+        asp-fallback-test-class="visually-hidden" asp-fallback-test-property="position"
+        asp-fallback-test-value="absolute" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+        integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" asp-fallback-href="~/lib/font-awesome/css/all.min.css"
+        asp-fallback-test-class="fab" asp-fallback-test-property="font-style" asp-fallback-test-value="normal" />
+    <link rel="stylesheet" href="~/dist/css/nav.css" asp-append-version="true" />
 </head>
-<body>
-    <section class="hero">
-        <section class="navigation">
-            <header>
-                <div class="header-content">
-                    <div class="logo"><a href="#"><img src="~/dist/img/logo.png" alt="logo" /></a></div>
-                    <div class="header-nav">
-                        <nav>
-                            <ul class="primary-nav">
-                                <li><a href="#intro">How we met</a></li>
-                                <li><a href="#events">Events</a></li>
-                                <li><a href="#instagram">Instagram</a></li>
-                                <li><a href="#eng-pics">Engagement</a></li>
-                                <li class="hidden-sm hidden-xs"><a href="@Url.Action("Index", "Guest")">Manage</a></li>
-                            </ul>
-                            <ul class="member-actions">
-                                <li><a href="#map">Venue</a></li>
-                                <li><a href="#rsvp" class="btn-white btn-small">RSVP</a></li>
-                            </ul>
-                        </nav>
-                    </div>
-                </div>
-            </header>
-        </section>
-        <div class="container" id="layout-text">
-            <div class="row">
-                <div class="col">
-                    <div class="hero-content text-center">
-                        <h1>Jacob and Elisa</h1>
-                        @* <img src="~/dist/img/logo-lg.png"> *@
-                        @* <p class="intro">Jacob & Elisa are getting hitched!</p> *@
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-sm-4 hidden-xs"></div>
-                <div class="col-sm-4 hidden-xs text-center">
-                    <a href="#rsvp"
-                       class="btn btn-white btn-large rsvp-btn">RSVP</a>
-                </div>
-                <div class="col-sm-4 hidden-xs"></div>
-            </div>
-        </div>
-        <div class="down-arrow floating-arrow"><a href="#invitation"><i class="fa fa-angle-down"></i></a></div>
-    </section>
-    <section id="invitation" class="section-padding">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12 text-center">
-                    <h3>We are getting married</h3>
-                    <p>
-                        The date is the 22<sup>nd</sup> of July '23 and we would like you to be a part of it.
-                    </p>
-                    <div class="share-bar"></div>
-                </div>
-            </div>
-        </div>
-    </section>
-    @RenderBody()
-    @*<main role="main">
-    @RenderBody()
-    </main>*@
 
+<body>
+    <section class="navigation">
+        <header>
+            <div class="header-content">
+                <div class="logo"><a href="#"><img src="~/dist/img/logo.png" alt="logo" /></a></div>
+                <div class="header-nav">
+                    <nav>
+                        <ul class="primary-nav">
+                            <li><a href="#intro">How we met</a></li>
+                            <li><a href="#events">Events</a></li>
+                            <li><a href="#instagram">Instagram</a></li>
+                            <li><a href="#eng-pics">Engagement</a></li>
+                            <li class="hidden-sm hidden-xs"><a href="@Url.Action("Index", "Guest")">Manage</a></li>
+                        </ul>
+                        <ul class="member-actions">
+                            <li><a href="#map">Venue</a></li>
+                            <li><a href="#rsvp" class="btn-white btn-small">RSVP</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </header>
+    </section>
+    <main role="main">
+        @RenderBody()
+    </main>
     <footer class="border-top footer text-muted">
         <div class="container">
             <div class="row">
@@ -97,15 +60,9 @@
             </div>
         </div>
     </footer>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js" integrity="sha512-STof4xm1wgkfm7heWqFJVn58Hm3EtS31XFaagaa8VMReCXAkQnJZ+jEy8PCC/iT18dFy95WcExNHFTqLyp72eQ==" crossorigin="anonymous" referrerpolicy="no-referrer"
-        asp-fallback-src="~/lib/jquery/jquery.min.js"
-        asp-fallback-test="window.jQuery"
-    ></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/js/bootstrap.min.js" integrity="sha512-1/RvZTcCDEUjY/CypiMz+iqqtaoQfAITmNSJY17Myp4Ms5mdxPS5UV7iOfdZoxcGhzFbOm6sntTKJppjvuhg4g==" crossorigin="anonymous" referrerpolicy="no-referrer"
             asp-fallback-src="~/lib/bootstrap/js/bootstrap.bundle.min.js"
             asp-fallback-test="window.bootstrap"></script>
-    <script src="~/src/js/site.js" asp-append-version="true"></script>
-    <script src="~/dist/js/index.js" asp-append-version="true"></script>
+    <script src="~/dist/js/site.min.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
-</html>

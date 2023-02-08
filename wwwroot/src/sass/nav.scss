@@ -1,0 +1,183 @@
+@import "site";
+
+/* ==========================================================================
+Navigation
+========================================================================== */
+header {
+    padding: 15px 5px;
+    border-bottom: solid 1px rgba(255, 255, 255, 0.2);
+    position: relative;
+    width: 1170px;
+    margin: 0 auto;
+    transition: padding 300ms ease-in-out;
+  
+    a {
+      color: $txt-light;
+      text-transform: uppercase;
+      font-size: $nav-font-size;
+  
+      &.login {
+        margin-right: 20px;
+      }
+    }
+  
+    .logo {
+      display: inline-block;
+    }
+  
+    .logo img {
+      height: 50px;
+    }
+  
+    ul.primary-nav {
+      margin: 0 0 0 75px;
+      padding: 0;
+  
+      li {
+        display: inline;
+  
+        a {
+          color: $txt-light;
+          padding-right: 25px;
+  
+          &:hover {
+            color: $accent-color;
+          }
+        }
+  
+        &:last-child a {
+          padding-right: 0px;
+        }
+      }
+    }
+  
+    ul.member-actions {
+      li {
+        display: inline;
+  
+        a {
+          color: $txt-light;
+  
+          &:hover {
+            color: $accent-color;
+          }
+        }
+      }
+    }
+  
+    .header-nav {
+      display: inline-block;
+    }
+  
+    .member-actions {
+      position: absolute;
+      right: 0;
+      top: 26px;
+      transition: all 300ms ease-in-out;
+    }
+  }
+  
+  .navigation {
+    transition: all 300ms ease-in-out;
+    background-color: $header-background;
+    position: fixed;
+    width: 100%;
+    z-index: 999;
+  }
+  
+  .fixed {
+    position: fixed;
+    background-color: $header-background;
+    z-index: 999;
+    width: 100%;
+  }
+  
+  .header-nav.open {
+    visibility: visible;
+    opacity: 0.9;
+    -webkit-transition: opacity 0.5s;
+    transition: opacity 0.5s;
+  }
+  
+  .nav-toggle {
+    position: absolute;
+    top: 0;
+    right: 15px;
+    z-index: 999999;
+    padding: 10px 35px 16px 0;
+    cursor: pointer
+  }
+  
+  .nav-toggle:focus {
+    outline: none
+  }
+  
+  .nav-toggle span,
+  .nav-toggle span:before,
+  .nav-toggle span:after {
+    content: "";
+    position: absolute;
+    display: block;
+    width: 35px;
+    height: 3px;
+    -moz-border-radius: 1px;
+    -webkit-border-radius: 1px;
+    border-radius: 1px;
+    background: #fff;
+    cursor: pointer
+  }
+  
+  .nav-toggle span:before {
+    top: -10px
+  }
+  
+  .nav-toggle span:after {
+    bottom: -10px
+  }
+  
+  .nav-toggle span,
+  .nav-toggle span:before,
+  .nav-toggle span:after {
+    -moz-transition: all 300ms ease-in-out;
+    -o-transition: all 300ms ease-in-out;
+    -webkit-transition: all 300ms ease-in-out;
+    transition: all 300ms ease-in-out
+  }
+  
+  .nav-toggle.active span {
+    background-color: transparent
+  }
+  
+  .nav-toggle.active span:before,
+  .nav-toggle.active span:after {
+    top: 0
+  }
+  
+  .nav-toggle.active span:before {
+    -moz-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+    transform: rotate(45deg)
+  }
+  
+  .nav-toggle.active span:after {
+    top: 10px;
+    -moz-transform: translatey(-10px) rotate(-45deg);
+    -ms-transform: translatey(-10px) rotate(-45deg);
+    -o-transform: translatey(-10px) rotate(-45deg);
+    -webkit-transform: translatey(-10px) rotate(-45deg);
+    transform: translatey(-10px) rotate(-45deg)
+  }
+  
+  .navicon {
+    position: absolute;
+    height: 26px;
+    right: 10px;
+    top: 48px;
+    visibility: hidden;
+    transition: all 300ms ease-in-out;
+  }
+  main {
+    padding-top: 86px;
+  }
