@@ -1,4 +1,6 @@
-﻿<div id="rsvp-modal" class="modal fade" tabindex="-1" role="dialog">
+﻿@model RsvpViewModel
+
+<div id="rsvp-modal" class="modal fade" tabindex="-1" role="dialog">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-body">
@@ -20,9 +22,7 @@
         <div class="col">
             <h3>Will you be joining us?</h3>
             <p>We would greatly appreciate if you could RSVP before the 1st of July '23</p>
-            <form id="rsvp-form" class="rsvp-form"
-                  action=""
-                  method="POST">
+            <form id="rsvp-form" class="rsvp-form" asp-action="RSVP" asp-controller="Guest" method="POST">
                 <div class="row">
                     <div class="col-md-6 col-sm-6">
                         <div class="form-input-group">
@@ -38,7 +38,7 @@
                 <div class="row">
                     <div class="col-md-6 col-sm-6">
                         <div class="form-input-group">
-                            <i class="fa fa-envelope pre-form-fa"></i><input type="email" name="email" class="" placeholder="Email">
+                            <i class="fa fa-envelope pre-form-fa"></i><input asp-for="Email" placeholder="Email">
                         </div>
                     </div>
                     <div class="col-md-6 col-sm-6">

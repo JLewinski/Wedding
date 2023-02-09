@@ -18,18 +18,17 @@ const testCard = new TestCard();
 console.log(testCard);
 
 $(() => {
-    $<HTMLAnchorElement>('a[href*="#"]:not([href="#"])').click(function () {
-        if (location.pathname.replace(/^\//, '') === this.pathname.replace(/^\//, '') && location.hostname === this.hostname) {
+    $<HTMLAnchorElement>('a[href*="#"]:not([href="#"])').on('click', function (event) {
+        if (this.hash !== "") {
+            event.preventDefault();
 
-            var target = $(this.hash);
-            target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
-            if (target.length) {
-                const top = target.offset()?.top as number;
-                $('html,body').animate({
-                    scrollTop: top - 90
-                }, 1000);
-                return false;
-            }
+            var $target = $(this.hash);
+            $target = $target.length ? $target : $('[name=' + this.hash.slice(1) + ']');
+            event.preventDefault();
+            const top = $target?.offset()?.top ?? 0 as number;
+            console.log(top);
+            $('html, body').animate({ scrollTop: top }, 800);
+            return false;
         }
     });
 });
@@ -49,7 +48,7 @@ window.addEventListener('scroll', () => {
         // navIcon.style.top = '34px';
     } else {
         navBar?.classList.remove('fixed');
-        header.style.borderBottom = 'solid 1px rgba(255, 255, 255, 0.2)';
+        // header.style.borderBottom = 'solid 1px rgba(255, 255, 255, 0.2)';
         // header.style.padding = '50px 0';
         memberActions.style.top = '41px';
         // navIcon.style.top = '48px';

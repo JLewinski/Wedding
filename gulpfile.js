@@ -8,7 +8,7 @@ const webpack = require('webpack-stream');
 // compile scss to css
 gulp.task('sass', function () {
     return gulp.src('./wwwroot/src/sass/*.scss')
-        .pipe(sass({ outputStyle: 'compressed' }).on('error', sass.logError))
+        .pipe(sass().on('error', sass.logError))
         .pipe(gulp.dest('./wwwroot/dist/css'));
 });
 

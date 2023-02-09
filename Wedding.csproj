@@ -9,6 +9,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="BCrypt.Net-Next" Version="4.0.3" />
     <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="7.0.0" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="7.0.0" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="7.0.0" />
@@ -27,7 +28,8 @@
 
   <ItemGroup>
     <Content Remove="wwwroot\src\**" />
-    <None Include="wwwroot\src\**" Watch="false"/>
+    <Content Remove="wwwroot\prev.src\**" />
+    <None Include="wwwroot\src\**" Watch="false" />
   </ItemGroup>
 
   <ItemGroup>
