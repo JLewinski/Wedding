@@ -26,12 +26,12 @@
                 <div class="row">
                     <div class="col-md-6 col-sm-6">
                         <div class="form-input-group">
-                            <i class="fa fa-user pre-form-fa"></i><input name="name" class="" placeholder="Name" required>
+                            <i class="fa fa-user pre-form-fa"></i><input asp-for="Name" placeholder="Name" required>
                         </div>
                     </div>
                     <div class="col-md-6 col-sm-6">
                         <div class="form-input-group">
-                            <i class="fa fa-users pre-form-fa"></i><input type="number" min="0" name="quantity" class="" placeholder="How Many Attending" required>
+                            <i class="fa fa-users pre-form-fa"></i><input asp-for="NumberAttending" placeholder="How Many Attending" required>
                         </div>
                     </div>
                 </div>
@@ -43,7 +43,7 @@
                     </div>
                     <div class="col-md-6 col-sm-6">
                         <div class="form-input-group">
-                            <i class="fa fa-phone pre-form-fa"></i><input type="number" name="phone" id="phone" class="" placeholder="Phone number">
+                            <i class="fa fa-phone pre-form-fa"></i><input asp-for="PhoneNumber" placeholder="Phone number">
                         </div>
                     </div>
                 </div>
