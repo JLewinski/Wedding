@@ -19,6 +19,10 @@
         crossorigin="anonymous" referrerpolicy="no-referrer" asp-fallback-href="~/lib/font-awesome/css/all.min.css"
         asp-fallback-test-class="fab" asp-fallback-test-property="font-style" asp-fallback-test-value="normal" />
     <link rel="stylesheet" href="~/dist/css/hero.css" asp-append-version="true" />
+    <style>
+        html { overflow-x: hidden; overflow-y: hidden; height: 100%; }
+        body { overflow-y: scroll; height: 100%;}
+    </style>
 </head>
 
 <body>
@@ -57,10 +61,10 @@
             </div>
         </div>
     </section>
+    @* @RenderBody() *@
+    <main role="main">
     @RenderBody()
-    @*<main role="main">
-    @RenderBody()
-    </main>*@
+    </main>
 
     <footer class="border-top footer text-muted">
         <div class="container">
