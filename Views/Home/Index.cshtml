@@ -2,18 +2,23 @@
     ViewData["Title"] = "Home Page";
     Layout = "_LayoutHero";
 }
+<section id="invitation" class="section-padding">
+    <partial name="Countdown"/>
+</section>
 <section id="intro" class="dark section-padding">
-    <partial name="Intro"/>
+    <partial name="Intro" />
 </section>
 <section class="events section-padding" id="events">
     <partial name="Events" />
 </section>
 <section id="map" class="section-padding">
-    <partial name="Map"/>
+    <partial name="Map" />
 </section>
 <section class="rsvp dark section-padding" id="rsvp">
     <partial name="_Rsvp" />
 </section>
 
 @section Scripts{
+    @*<script src="https://cdnjs.cloudflare.com/ajax/libs/countdown/2.6.0/countdown.min.js" integrity="sha512-FkM4ZGExuYz4rILLbNzw8f3HxTN9EKdXrQYcYfdluxJBjRLthYPxxZixV/787qjN3JLs2607yN5XknR/cQMU8w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>*@
+    <script src="~/dist/js/index.js" asp-append-version="true"></script>
 }

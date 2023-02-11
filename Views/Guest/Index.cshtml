@@ -1,10 +1,29 @@
 ﻿@model List<Wedding.Data.Guest>
 
 <div class="container">
-    <ul>
-        @foreach (var guest in Model)
-        {
-            <li>@guest.GuestName: @(guest.NumberAdults + guest.NumberChildren)</li>
-        }
-    </ul>
+    <table class="table table-striped table-bordered table-hover">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Status</th>
+                <th>Adults</th>
+                <th>Children</th>
+                <th>Email</th>
+                <th>Phone Number</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var guest in Model)
+            {
+                <tr>
+                    <td>@guest.GuestName</td>
+                    <td>@(guest.IsGoing == true ? "GOING" : guest.IsGoing == false ? "NOT GOING" : "MAYBE")</td>
+                    <td>@guest.NumberAdults</td>
+                    <td>@guest.NumberChildren</td>
+                    <td>@guest.Email</td>
+                    <td>@guest.PhoneNumber</td>
+                </tr>
+            }
+        </tbody>
+    </table>
 </div>

@@ -48,19 +48,7 @@
         </div>
         <div class="down-arrow floating-arrow"><a href="#invitation"><i class="fa fa-angle-down"></i></a></div>
     </section>
-    <section id="invitation" class="section-padding">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12 text-center">
-                    <h3>We are getting married</h3>
-                    <p>
-                        The date is the 3<sup>rd</sup> of July '23 and we would like you to be a part of it.
-                    </p>
-                    <div class="share-bar"></div>
-                </div>
-            </div>
-        </div>
-    </section>
+    
     @* @RenderBody() *@
     <main role="main">
     @RenderBody()
@@ -92,7 +80,6 @@
         integrity="sha512-xq+Vm8jC94ynOikewaQXMEkJIOBp7iArs3IhFWSWdRT3Pq8wFz46p+ZDFAR7kHnSFf+zUv52B3prRYnbDRdgog=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="~/dist/js/site.min.js" asp-append-version="true"></script>
-    <script src="~/dist/js/index.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 

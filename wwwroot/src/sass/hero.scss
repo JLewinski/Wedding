@@ -3,6 +3,10 @@
 /* ==========================================================================
 Navigation
 ========================================================================== */
+
+
+
+
 .header-nav.open {
     visibility: visible;
     opacity: 0.9;
@@ -138,6 +142,7 @@ Navigation
     position: fixed;
     width: 100%;
     z-index: 999;
+    background-color: transparent;
 }
 
 .fixed {
@@ -277,5 +282,22 @@ header {
         bottom: -285px;
         left: 50%;
         transform: translateX(-50%);
+    }
+}
+
+.timer {
+    &_section{
+        display: inline-block;
+        text-align: center;
+        margin: 0 10px;
+    }
+
+    &_number {
+        font-weight: 300;
+        font-size: 3.5em;
+    }
+
+    &_label {
+        font-size: 1.5em;
     }
 }
