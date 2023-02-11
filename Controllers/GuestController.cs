@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System.Diagnostics;
 using Wedding.Data;
 using Wedding.Models;
@@ -18,9 +19,10 @@ namespace Wedding.Controllers
         }
 
         [Authorize]
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            return View();
+            var guests = await _context.Guests.ToListAsync();
+            return View(guests);
         }
 
         [HttpGet]
@@ -55,6 +57,8 @@ namespace Wedding.Controllers
                 });
                 await _context.SaveChangesAsync();
                 //TODO: sign user in and ask for more info (children, address, etc.)
+                //TODO: ask user to create password (include in table that this is the initial password)
+                //TODO: once emails are working enable a reset password email
                 //TODO: create page for guests to message the bride and groom
                 //TODO: show link for registry
                 return RedirectToAction(nameof(ThankYou), new ThankYouViewModel{Name = viewModel.Name, Password = password, Username = viewModel.Email});

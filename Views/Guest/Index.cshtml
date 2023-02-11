@@ -1,3 +1,10 @@
-﻿
-@{
-}
+﻿@model List<Wedding.Data.Guest>
+
+<div class="container">
+    <ul>
+        @foreach (var guest in Model)
+        {
+            <li>@guest.GuestName: @(guest.NumberAdults + guest.NumberChildren)</li>
+        }
+    </ul>
+</div>
