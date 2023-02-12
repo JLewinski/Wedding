@@ -3,7 +3,14 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - Jacob and Elisa</title>
+    @{
+        string title = "Jacob and Elisa";
+        if (ViewData.ContainsKey("Title"))
+        {
+            title = ViewData["Title"] + " - " + title;
+        }
+    }
+    <title>@title</title>
     <meta name="description" content="We would like to invite you to our big day.">
     @*<link rel="manifest" href="manifest.json">*@
     @*<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
