@@ -4,18 +4,41 @@
             <h3 class="header"><strong>3rd July</strong></h3>
         </div>
     </div>
-    <div class="row">
-        <div class="col-md-6 col-sm-12 col-xs-12 leftcol">
-            <div>
-                <h5>Wedding <span class="time">2:30PM - 3:30PM</span></h5>
-                <p>Located at Corpus Cristi in Oneonta, AL</p>
+    <div class="row flex-md-row-reverse">
+        <div class="col-md-6 col-sm-12 col-xs-12 rightcol">
+            <div id="church-map" class="map-option">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3308.5172346533636!2d-86.44593058440387!3d33.97924592902001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x888991b75f30d03f%3A0xf66b0ffaa3deb7bf!2sCorpus%20Christi%20Catholic%20Church!5e0!3m2!1sen!2sus!4v1676154799654!5m2!1sen!2sus"
+                width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+            <div id="venue-map" style="display: none" class="map-option">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3309.9886033473244!2d-86.37235988440457!3d33.94142123100866!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88898f3aea8dbf67%3A0xd86d6aae1df59393!2s280%20Blakely%20Lk%20Dr%2C%20Oneonta%2C%20AL%2035121!5e0!3m2!1sen!2sus!4v1676154895218!5m2!1sen!2sus"
+                width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
         </div>
-        <div class="col-md-6 col-sm-12 col-xs-12 rightcol">
-            <div>
-                <h5>Reception <span class="time">4:00PM - 10:00PM</span></h5>
-                <p>Located at the Lake Weddings!</p>
-                <small>280 Blakely Lake Drive Oneonta, AL 35121</small>
+        <div class="col-md-6 col-sm-12 col-xs-12 leftcol">
+            <div class="row">
+                <div class="col">
+                    <h5>Wedding <span class="time">2:30PM - 3:30PM</span></h5>
+                    <p>Located at Corpus Cristi in Oneonta, AL</p>
+                </div>
+                <div class="col-md-5">
+                    <a class="btn btn-small map-toggle-btn" id="btn-show-map-church" data-show="#church-map" data-hide="#venue-map">
+                        <i class="fa fa-map-marker" style="padding-right: 10px;"></i>Show Church
+                    </a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <h5>Reception <span class="time">4:00PM - 10:00PM</span></h5>
+                    <p>
+                        Located at the Lake Weddings!
+                    </p>
+                </div>
+                <div class="col-md-5">
+                    <a class="btn btn-small map-toggle-btn" id="btn-show-map-venue" data-hide="#church-map" data-show="#venue-map">
+                        <i class="fa fa-map-marker" style="padding-right: 10px;"></i>Show Venue
+                    </a>
+                </div>
             </div>
         </div>
     </div>

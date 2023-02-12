@@ -4,9 +4,6 @@
 Navigation
 ========================================================================== */
 
-
-
-
 .header-nav.open {
     visibility: visible;
     opacity: 0.9;
@@ -299,5 +296,79 @@ header {
 
     &_label {
         font-size: 1.5em;
+    }
+}
+
+/* ==========================================================================
+slideshow
+========================================================================== */
+
+.slideshow-container {
+    max-width: 80%;
+    position: relative;
+    margin: auto;
+    height: 55em;
+    overflow-y: hidden;
+
+    .mySlides {
+        display: none;
+
+        img.portrait {
+            @media (min-width: 992px){
+                margin-top: -20%;
+            }
+        }
+    }
+
+    .prev, .next {
+        cursor: pointer;
+        position: absolute;
+        top: 50%;
+        width: auto;
+        margin-top: -22px;
+        padding: 16px;
+        color: white;
+        font-weight: $bold;
+        font-size: $font-size-h4;
+        transition: 0.6s ease;
+        user-select: none;
+
+        &:hover {
+            background-color: rbg(0,0,0,0.8);
+        }
+    }
+
+    .prev {
+        border-radius: 0 3px 3px 0;
+    }
+
+    .next {
+        right: 0;
+        border-radius: 3px 0 0 3px;
+    }
+
+    .text {
+        color: $accent-color;
+        font-size: $font-size-p;
+        padding: 8px 12px;
+        position: absolute;
+        bottom: 8px;
+        width: 100%;
+        text-align: center;
+    }
+
+    .fade {
+        animation-name: fade;
+        animation-duration: 1.5s;
+    }
+
+    @keyframes fade {
+        from {
+            opacity: .4
+        }
+
+        to {
+            opacity: 1
+        }
     }
 }

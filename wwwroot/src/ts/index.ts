@@ -68,5 +68,39 @@ $(() => {
         $('#countdown_seconds').text(seconds);
     }
     setInterval(updateCountdown, 1000);
+
+    $('.map-toggle-btn').click(e => {
+        $(e.target.dataset.hide as string).hide();
+        $(e.target.dataset.show as string).fadeIn();
+    });
+
+    function setupSlides() {
+        function showSlide(index: number) {
+
+            $($('.mySlides').removeClass('show').hide()[index]).addClass('show').show();
+        }
+
+        let index = 0;
+        function nextSlide() {
+            if (++index >= $('.mySlides').length) {
+                index = 0;
+            }
+            showSlide(index);
+        }
+        function previousSlide() {
+            if (--index < 0) {
+                index = $('.mySlides').length - 1;
+            }
+            showSlide(index);
+        }
+
+        $('#prev-slide-btn').click(previousSlide);
+        $('#next-slide-btn').click(nextSlide);
+
+        setInterval(nextSlide, 10000);
+        showSlide(index);
+    }
+    setupSlides();
+    
 });
 
