@@ -18,7 +18,7 @@ namespace Wedding.Controllers
             _context = context;
         }
 
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Index()
         {
             var guests = await _context.Guests.ToListAsync();
