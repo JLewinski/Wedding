@@ -1,23 +1,45 @@
-<section class="navigation">
-        <header>
-            <div class="header-content">
-                <div class="logo"><a href="@Url.Action("Index", "Home")#"><img src="~/dist/img/logo.png" alt="logo" /></a></div>
-                <div class="header-nav">
-                    <nav>
-                        <ul class="primary-nav">
-                            <li><a href="@Url.Action("Index", "Home")#intro">How we met</a></li>
-                            <li><a href="@Url.Action("Index", "Home")#events">Events</a></li>
-                            @* <li><a href="@Url.Action("Index", "Home")#instagram">Instagram</a></li> *@
-                            <li><a href="@Url.Action("Index", "Home")#eng-pics">Galery</a></li>
-                            <li><a href="@Url.Action("Index", "Registry")">Registry</a></li>
-                            <li class="hidden-sm hidden-xs"><a href="@Url.Action("Index", "Guest")">Manage</a></li>
-                        </ul>
-                        <ul class="member-actions">
-                            <li><a href="#map">Venue</a></li>
-                            <li><a href="#rsvp" class="btn-white btn-small">RSVP</a></li>
-                        </ul>
-                    </nav>
-                </div>
-            </div>
-        </header>
-    </section>
+@{
+    string collapseToggle = ViewBag.IsHero ? "data-bs-toggle=\"collapse\" data-bs-target=\"#navbarSupportedContent\"" : "";
+}
+<div class="container container-fluid">
+    <a class="navbar-brand" href="@Url.Action("Index", "Home")#"><img src="~/dist/img/logo.png" alt="logo" width="67" height="50" /></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+                <a href="@Url.Action("Index", "Home")#intro" class="nav-link" @Html.Raw(collapseToggle)>How we met</a>
+            </li>
+            <li class="nav-item">
+                <a href="@Url.Action("Index", "Home")#events" class="nav-link" @Html.Raw(collapseToggle)>Events</a>
+            </li>
+            <li class="nav-item">
+                <a href="@Url.Action("Index", "Home")#slideshow" class="nav-link" @Html.Raw(collapseToggle)>Slideshow</a>
+            </li>
+            <li class="nav-item">
+                <a href="@Url.Action("Index", "Registry")" class="nav-link">Registry</a>
+            </li>
+            <li class="nav-item">
+                <a href="@Url.Action("Index", "Home")#rsvp" class="nav-link">RSVP</a>
+            </li>
+            @if (User.IsInRole("Admin"))
+            {
+                <li class="nav-item">
+                    <a href="@Url.Action("Index", "Guest")" class="nav-link">Guest List</a>
+                </li>
+            }
+        </ul>
+        <ul class="d-flex">
+            @if (User.Identity.IsAuthenticated)
+            {
+                <li class="nav-item"><a href="@Url.Action("Logout", "User")" class="btn btn-light btn-small">Logout</a></li>
+            }
+            else
+            {
+                <li class="nav-item"><a href="@Url.Action("Login", "User")" class="btn btn-light btn-small">Login</a></li>
+
+            }
+        </ul>
+    </div>
+</div>

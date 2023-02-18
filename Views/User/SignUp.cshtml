@@ -5,7 +5,7 @@
     <h1>Sign Up</h1>
     <div asp-validation-summary="All" class="text-danger"></div>
     <div class="row">
-        <form method="post" class="col-lg-8 col-xl-6">
+        <form method="post" class="col-lg-8 col-xl-6" asp-antiforgery="true">
             <div class="form-input-group mb-3">
                 <i class="fa fa-envelope pre-form-fa"></i>
                 <input asp-for="Email" class="" placeholder="Email" />

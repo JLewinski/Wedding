@@ -4,5 +4,22 @@
 }
 <div class="container rsvp">
     <h1>RSVP</h1>
-    <partial name="_Rsvp" model="Model"/>
+    <div class="row">
+        <div class="col-md">
+            <div asp-validation-summary="All" class="text-danger"></div>
+            <partial name="_Rsvp" model="Model" />
+            <partial name="../Home/Countdown" />
+        </div>
+        <div class="d-md-none">
+            <hr />
+            <br />
+        </div>
+        <div class="col-md">
+            <partial name="../Home/Slideshow" />
+        </div>
+    </div>
 </div>
+    
+@section Scripts{
+    <script src="~/dist/js/home.js" asp-append-version="true"></script>
+}

@@ -4,6 +4,7 @@ const clean = require('gulp-clean');
 const uglify = require('gulp-uglify');
 const rename = require('gulp-rename');
 const webpack = require('webpack-stream');
+const htmlmin = require('gulp-htmlmin');
 
 // compile scss to css
 gulp.task('sass', function () {
@@ -12,6 +13,11 @@ gulp.task('sass', function () {
         .pipe(gulp.dest('./wwwroot/dist/css'));
 });
 
+gulp.task('email', function () {
+    return gulp.src('./wwwroot/src/email/**/*.html')
+        .pipe(htmlmin({ collapseWhitespace: true }))
+        .pipe(gulp.dest('./wwwroot/dist/email/'));
+});
 
 gulp.task('ts', function () {
    return gulp.src('./wwwroot/ts/**/*.ts')

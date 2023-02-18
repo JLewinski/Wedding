@@ -39,41 +39,42 @@ $base-line-height: 29px;
 Typography
 ========================================================================== */
 p {
-  font-size: $font-size-p;
-  line-height: $base-line-height;
-  color: $txt-primary;
-  padding-bottom: 20px;
+    font-size: $font-size-p;
+    line-height: $base-line-height;
+    color: $txt-primary;
+    // padding-bottom: 20px;
 }
 
 h1 {
-  font-size: $font-size-h1;
+    font-size: $font-size-h1;
 }
 
 h2 {
-  font-size: $font-size-h2;
-  font-weight: $light;
-  color: $h2-color;
+    font-size: $font-size-h2;
+    font-weight: $light;
+    color: $h2-color;
 }
 
 h3 {
-  color: $h3-color;
-  font-size: $font-size-h4;
-  font-weight: $bold;
-  text-transform: uppercase;
-  letter-spacing: 3px;
-  line-height: $base-line-height;
+    color: $h3-color;
+    font-size: $font-size-h4;
+    font-weight: $bold;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    line-height: $base-line-height;
 }
 
 h4 {
-  font-size: $font-size-h4;
+    font-size: $font-size-h4;
 }
 
 h5 {
-  font-size: $font-size-h5;
-  color: $h5-color;
-  text-transform: uppercase;
-  font-weight: $semibold;
+    font-size: $font-size-h5;
+    color: $h5-color;
+    text-transform: uppercase;
+    font-weight: $semibold;
 }
+
 .input-validation-error {
-  border-color: red;
+    border-color: red;
 }

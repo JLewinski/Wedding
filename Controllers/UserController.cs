@@ -31,6 +31,7 @@ namespace Wedding.Controllers
 
         [HttpPost]
         [AllowAnonymous]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Login(SignInViewModel viewModel, string? returnUrl = null)
         {
             if (ModelState.IsValid)
@@ -38,7 +39,7 @@ namespace Wedding.Controllers
                 var user = await AuthenticateUser(viewModel.Email, viewModel.Password);
                 if (user != null)
                 {
-                    await SignIn(user, returnUrl);
+                    return await SignIn(user, returnUrl);
                 }
                 else
                 {
@@ -51,8 +52,8 @@ namespace Wedding.Controllers
 
         public async Task<IActionResult> Logout(string returnUrl)
         {
-
-            return RedirectToAction(nameof(Login), new { ReturnUrl = returnUrl });
+            await HttpContext.SignOutAsync(returnUrl);
+            return RedirectToAction("Index", "Home");
         }
 
         [HttpGet]
@@ -64,6 +65,7 @@ namespace Wedding.Controllers
 
         [HttpPost]
         [AllowAnonymous]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> SignUp(SignUpViewModel viewModel)
         {
             var alreadyExistingUser = await _context.Users.FirstOrDefaultAsync(x => x.UserName == viewModel.Email);
@@ -72,7 +74,7 @@ namespace Wedding.Controllers
                 ModelState.AddModelError(string.Empty, "A user with that email already exists");
             }
             var guest = await _context.Guests.FirstOrDefaultAsync(x => x.Email == viewModel.Email);
-            if (ModelState.IsValid && guest == null && viewModel.Email != "jacob@lewinskitech.com")
+            if (ModelState.IsValid && guest == null && viewModel.Email != "catholicgirl333@gmail.com")
             {
                 ModelState.AddModelError(string.Empty, "There is no RSVP with that email");
             }
@@ -101,7 +103,7 @@ namespace Wedding.Controllers
 
         }
 
-        private async Task<IActionResult> SignIn(User user, string returnUrl = "/")
+        private async Task<IActionResult> SignIn(User user, string? returnUrl = null)
         {
             var claims = new List<Claim>{
                     new Claim(ClaimTypes.Name, user.UserName),
@@ -141,7 +143,7 @@ namespace Wedding.Controllers
 
             _logger.LogInformation($"{user.UserName} logged in at {DateTime.Now}");
 
-            return LocalRedirect(returnUrl ?? "/");
+            return LocalRedirect(returnUrl ?? Url.Action("Index", "Home") ?? "/");
         }
 
 

@@ -1,0 +1,13 @@
+﻿@model NoteViewModel
+@{
+}
+<div class="container">
+    <h1>Write us a note!</h1>
+    <form asp-antiforgery="true">
+        <input type="hidden" asp-for="Id" />
+        <textarea asp-for="NoteText" class="form-control mb-2"></textarea>
+        <div class="d-flex justify-content-end">
+            <button type="submit" class="btn">Send</button>
+        </div>
+    </form>
+</div>

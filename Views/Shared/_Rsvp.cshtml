@@ -21,8 +21,8 @@
     <div class="row align-items-center">
         <div class="col">
             <h3>Will you be joining us?</h3>
-            <p>We would greatly appreciate if you could RSVP before the 1st of July '23</p>
-            <form id="rsvp-form" class="rsvp-form" asp-action="RSVP" asp-controller="Guest" method="POST">
+            <p>Our wedding is the 3rd of July '23</p>
+            <form id="rsvp-form" class="rsvp-form" asp-action="RSVP" asp-controller="Guest" method="POST" asp-antiforgery="true">
                 <div class="row">
                     <div class="col-md-6 col-sm-6">
                         <div class="form-input-group">
@@ -47,14 +47,11 @@
                         </div>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-md-12" id="alert-wrapper"></div>
-                </div>
                 <button class="btn-fill rsvp-btn">
-                    Yes,
-                    that's me!
+                    Submit
                 </button>
             </form>
         </div>
+        @*TODO: Write us a note instead*@
     </div>
 </div>

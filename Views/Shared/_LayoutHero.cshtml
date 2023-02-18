@@ -1,4 +1,7 @@
-﻿<!DOCTYPE html>
+﻿@{
+    ViewData["IsHero"] = true;
+}
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -26,22 +29,22 @@
 </head>
 
 <body>
-    <section class="hero">
+    <nav class="navbar navbar-dark navbar-expand-lg fixed-top">
         <partial name="Navigation"></partial>
+    </nav>
+    <section class="hero">
         <div class="container" id="layout-text">
             <div class="row">
                 <div class="col">
                     <div class="hero-content text-center">
                         <h1>Jacob and Elisa</h1>
-                        @* <img src="~/dist/img/logo-lg.png"> *@
-                        @* <p class="intro">Jacob & Elisa are getting hitched!</p> *@
                     </div>
                 </div>
             </div>
             <div class="row">
                 <div class="col-sm-4 hidden-xs"></div>
                 <div class="col-sm-4 hidden-xs text-center">
-                    <a href="#rsvp" class="btn btn-white btn-large rsvp-btn">RSVP</a>
+                    <a href="#rsvp" class="btn btn-light btn-large rsvp-btn">RSVP</a>
                 </div>
                 <div class="col-sm-4 hidden-xs"></div>
             </div>
@@ -79,7 +82,11 @@
         src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/4.0.0/jquery.validate.unobtrusive.min.js"
         integrity="sha512-xq+Vm8jC94ynOikewaQXMEkJIOBp7iArs3IhFWSWdRT3Pq8wFz46p+ZDFAR7kHnSFf+zUv52B3prRYnbDRdgog=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/js/bootstrap.min.js" integrity="sha512-1/RvZTcCDEUjY/CypiMz+iqqtaoQfAITmNSJY17Myp4Ms5mdxPS5UV7iOfdZoxcGhzFbOm6sntTKJppjvuhg4g==" crossorigin="anonymous" referrerpolicy="no-referrer"
+            asp-fallback-src="~/lib/bootstrap/js/bootstrap.bundle.min.js"
+            asp-fallback-test="window.bootstrap"></script>
     <script src="~/dist/js/site.min.js" asp-append-version="true"></script>
+    <script src="~/dist/js/home.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 

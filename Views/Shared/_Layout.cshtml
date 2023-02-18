@@ -1,3 +1,6 @@
+@{
+    ViewData["IsHero"] = false;
+}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -28,7 +31,9 @@
 </head>
 
 <body>
-    <partial name="Navigation"></partial>
+    <nav class="navbar navbar-dark navbar-expand-lg sticky-top">
+        <partial name="Navigation"></partial>
+    </nav>
     <main role="main">
         @RenderBody()
     </main>

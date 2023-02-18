@@ -328,21 +328,6 @@ Features-stack
     border-bottom: none;
   }
 
-  // .ipad-wrap {
-  //   width: 706px;
-  //   height: 1002px;
-  //   background: url("../img/ipad-device.png") no-repeat center center;
-  //   z-index: 1;
-  // }
-  // .iphone-wrap {
-  //   width: 304px;
-  //   height: 620px;
-  //   background: url("../img/iphone6.png") no-repeat center center;
-  //   position: absolute;
-  //   left: 530px;
-  //   bottom: 129px;
-  //   z-index: 2;
-  // }
   .device-showcase {
     position: absolute;
     bottom: -365px;
@@ -360,40 +345,9 @@ Features-stack
 }
 
 /* ==========================================================================
-.features-extra
-========================================================================== */
-.features-extra {
-  position: relative;
-  z-index: 3;
-
-  .btn {
-    margin-top: 20px;
-  }
-
-  // .macbook-wrap {
-  //   position: absolute;
-  //   width: 916px;
-  //   height: 540px;
-  //   background: url("../img/macbook-pro.png") no-repeat center center;
-  //   top: 114px;
-  //   z-index: 4;
-  //   left: 50%;
-  // }
-}
-
-/* ==========================================================================
 .events
 ========================================================================== */
 .events {
-  .leftcol {
-    padding-right: 100px;
-    border-right: solid 1px $keyline-color;
-  }
-
-  .rightcol {
-    padding-left: 100px;
-  }
-
   .time {
     font-size: 13px;
     font-style: italic;
@@ -784,4 +738,98 @@ body.modal-open {
 
 .modal-body {
   padding: 25px;
+}
+
+/* ==========================================================================
+slideshow
+========================================================================== */
+
+.slideshow-container {
+    max-width: 80%;
+    position: relative;
+    margin: auto;
+    overflow-y: hidden;
+
+    .mySlides {
+        display: none;
+
+        .show{
+            display: block;
+        }
+
+        
+    }
+
+    .prev, .next {
+        cursor: pointer;
+        position: absolute;
+        top: 50%;
+        width: auto;
+        margin-top: -22px;
+        padding: 16px;
+        color: $accent-color;
+        font-weight: $bold;
+        font-size: $font-size-h4;
+        transition: 0.6s ease;
+        user-select: none;
+
+        &:hover {
+            background-color: rbg(0,0,0,0.8);
+        }
+    }
+
+    .prev {
+        border-radius: 0 3px 3px 0;
+    }
+
+    .next {
+        right: 0;
+        border-radius: 3px 0 0 3px;
+    }
+
+    .text {
+        color: $accent-color;
+        font-size: $font-size-p;
+        padding: 8px 12px;
+        position: absolute;
+        bottom: 8px;
+        width: 100%;
+        text-align: center;
+    }
+
+    .fade {
+        animation-name: fade;
+        animation-duration: 1.5s;
+    }
+
+    @keyframes fade {
+        from {
+            opacity: .4
+        }
+
+        to {
+            opacity: 1
+        }
+    }
+}
+
+/* ==========================================================================
+Countdown
+========================================================================== */
+
+.timer {
+    &_section {
+        display: inline-block;
+        text-align: center;
+        margin: 0 10px;
+    }
+
+    &_number {
+        font-weight: 300;
+        font-size: 3.5em;
+    }
+
+    &_label {
+        font-size: 1.5em;
+    }
 }

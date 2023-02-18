@@ -2,7 +2,10 @@ const path = require('path');
 const nodeExternals = require('webpack-node-externals');
 
 module.exports = {
-    entry: './wwwroot/src/ts/index.ts',
+    entry: {
+        index: './wwwroot/src/ts/index.ts',
+        home: './wwwroot/src/ts/site.ts'
+        },
     devtool: 'inline-source-map',
     target: 'node',
     externals: [nodeExternals()],
@@ -23,7 +26,7 @@ module.exports = {
         extensions: ['.tsx', '.ts', '.js']
     },
     output: {
-        filename: 'index.js',
+        filename: '[name].js',
         path: path.resolve(__dirname, 'CryptonOnboarding', 'wwwroot', 'js')
     }
 }

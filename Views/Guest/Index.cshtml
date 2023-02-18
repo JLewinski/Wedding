@@ -1,9 +1,17 @@
 ﻿@model List<Wedding.Data.Guest>
 @{
     ViewData["Title"] = "Guest List";
+    int adults = Model.Where(x => x.IsGoing == true).Sum(x => x.NumberAdults);
+    int children = Model.Where(x => x.IsGoing == true).Sum(x => x.NumberChildren);
+    int total = adults + children;
 }
 
-<div class="container">
+<div class="container mt-3">
+    <div class="row text-center">
+        <div class="col-md">Total Adults: @adults</div>
+        <div class="col-md">Total Children: @children</div>
+        <div class="col-md">Total: @total</div>
+    </div>
     <table class="table table-striped table-bordered table-hover">
         <thead>
             <tr>
