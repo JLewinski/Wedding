@@ -11,11 +11,13 @@ namespace Wedding.Controllers
     {
         private readonly ILogger<GuestController> _logger;
         private readonly WeddingContext _context;
+        private readonly Services.EmailService _email;
 
-        public GuestController(ILogger<GuestController> logger, WeddingContext context)
+        public GuestController(ILogger<GuestController> logger, WeddingContext context, Services.EmailService emailService)
         {
             _logger = logger;
             _context = context;
+            _email = emailService;
         }
 
         [Authorize(Roles = "Admin")]
@@ -68,21 +70,21 @@ namespace Wedding.Controllers
                 await _context.SaveChangesAsync();
 
                 //TODO: sign user in and ask for more info (children, address, etc.)
-                //TODO: ask user to create password (include in table that this is the initial password)
                 //TODO: once emails are working enable a reset password email
                 //TODO: create page for guests to message the bride and groom
                 //TODO: show link for registry
                 var thankYou = new ThankYouViewModel(guest);
-                await Services.EmailService.SendConfirmationEmail(thankYou, Url.Action("ThankYou", "Guest", thankYou));
+                await _email.SendConfirmationEmail(thankYou, Url.Action("ThankYou", "Guest", thankYou));
+                
 
                 return RedirectToAction(nameof(ThankYou), thankYou);
             }
+
             return View(viewModel);
         }
 
         public async Task<IActionResult> Change(Guid id)
         {
-            //var guest = await _context.Guests.FirstOrDefaultAsync(x => x.UserId == id);
             var guest = await _context.Guests.FindAsync(id);
             if (guest == null)
             {
@@ -106,7 +108,7 @@ namespace Wedding.Controllers
 
                 await _context.SaveChangesAsync();
                 var thankYou = new ThankYouViewModel(guest);
-                await Services.EmailService.SendConfirmationEmail(thankYou, Url.Action("ThankYou", "Guest", thankYou));
+                await _email.SendConfirmationEmail(thankYou, Url.Action("ThankYou", "Guest", thankYou));
                 return RedirectToAction(nameof(ThankYou), thankYou);
             }
             return View(viewModel);
@@ -130,10 +132,11 @@ namespace Wedding.Controllers
                 var guest = await _context.Guests.FindAsync(viewModel.Id);
                 if (guest != null)
                 {
-                    _context.Notes.Add(new Data.Note
+                    _context.Notes.Add(new Note
                     {
                         NoteText = viewModel.NoteText,
-                        GuestId = guest.UserId
+                        GuestId = guest.UserId,
+                        DateCreated = DateTime.Now
                     });
 
                     await _context.SaveChangesAsync();

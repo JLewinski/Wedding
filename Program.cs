@@ -1,7 +1,10 @@
+using ElmahCore.Mvc;
+using ElmahCore.Sql;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Wedding.Data;
+using Wedding.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -20,12 +23,24 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
     });
 builder.Services.AddControllersWithViews();
 
+builder.Services.Configure<EmailOptions>(builder.Configuration.GetSection(nameof(EmailOptions)));
+builder.Services.AddScoped<EmailService, EmailService>();
+
+builder.Services.AddElmah<SqlErrorLog>(options =>
+{
+    options.Path = "/Elmah";
+    options.OnPermissionCheck = context => context.User.IsInRole("Admin");
+    options.ConnectionString = connectionString;
+    //options.SqlServerDatabaseSchemaName = "Error";
+});
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
-    app.UseMigrationsEndPoint();
+    //app.UseMigrationsEndPoint();
+    app.UseElmahExceptionPage();
 }
 else
 {
@@ -45,6 +60,7 @@ app.UseCookiePolicy(new CookiePolicyOptions{
 
 app.UseAuthentication();
 app.UseAuthorization();
+app.UseElmah();
 
 app.MapControllerRoute(
     name: "default",
