@@ -9,9 +9,9 @@ namespace Wedding.Data
 
         }
 
-        public DbSet<User> Users { get; set; }
-        public DbSet<Guest> Guests { get; set; }
-        public DbSet<Note> Notes { get; set; }
+        public DbSet<User> Users { get; set; } = null!;
+        public DbSet<Guest> Guests { get; set; } = null!;
+        public DbSet<Note> Notes { get; set; } = null!;
 
     }
 }

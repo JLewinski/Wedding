@@ -29,14 +29,14 @@ namespace Wedding.Models
         public byte NumberChildren { get; set; }
         [Required]
         [DisplayName("Name")]
-        public string? GuestName { get; set; }
+        public string GuestName { get; set; } = null!;
         [Required]
         [DataType(DataType.EmailAddress)]
-        public string? Email { get; set; }
+        public string Email { get; set; } = null!;
         [Required]
         [DisplayName("Phone Number")]
         [DataType(DataType.PhoneNumber)]
-        public string? PhoneNumber { get; set; }
+        public string PhoneNumber { get; set; } = null!;
 
     }
 }

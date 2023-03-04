@@ -9,9 +9,9 @@ namespace Wedding.Data
         public byte NumberAdults { get; set; }
         public byte NumberChildren { get; set; }
         public bool? IsGoing { get; set; }
-        public string GuestName { get; set; }
-        public string Email { get; set; }
-        public string PhoneNumber { get; set; }
+        public string GuestName { get; set; } = null!;
+        public string Email { get; set; } = null!;
+        public string PhoneNumber { get; set; } = null!;
 
     }
 }

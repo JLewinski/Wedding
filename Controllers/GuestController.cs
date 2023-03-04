@@ -99,6 +99,9 @@ namespace Wedding.Controllers
             if (ModelState.IsValid)
             {
                 var guest = await _context.Guests.FindAsync(viewModel.UserId);
+                if(guest == null){
+                    return RedirectToAction("Index", "Home");
+                }
                 guest.NumberChildren = viewModel.NumberChildren;
                 guest.NumberAdults = viewModel.NumberAdults;
                 guest.PhoneNumber = viewModel.PhoneNumber;

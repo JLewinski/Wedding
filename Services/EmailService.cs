@@ -67,7 +67,7 @@ namespace Wedding.Services
         public async Task SendConfirmationEmail(ThankYouViewModel guest, string url)
         {
             var fileText = await System.IO.File.ReadAllTextAsync(@"./wwwroot/dist/email/confirmation.html");
-            fileText = fileText.Replace("@Model.Email", guest.Email).Replace("@Model.GuestId", guest.GuestId.ToString()).Replace("@Model.Url", url);
+            fileText = fileText.Replace("@Model.Email", guest.Email).Replace("@Model.GuestId", guest.GuestId.ToString()).Replace("@Model.Url", url ?? @"https://jacobandelisa.com");
             var message = new MailMessage
             {
                 Subject = "Jacob and Elisa's Wedding",

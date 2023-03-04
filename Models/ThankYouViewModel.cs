@@ -17,9 +17,9 @@ namespace Wedding.Models
             GuestId = guest.UserId;
             Email = guest.Email;
         }
-        public string Name { get; set; }
+        public string Name { get; set; } = null!;
         public Guid GuestId { get; set; }
-        public string Email { get; set; }
-        public string? Url { get; set; }
+        public string Email { get; set; } = null!;
+        public string? Url { get; set; } = null!;
     }
 }
