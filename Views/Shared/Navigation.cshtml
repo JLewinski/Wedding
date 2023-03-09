@@ -20,9 +20,9 @@
                 <a href="@Url.Action("Index", "Home")#slideshow" class="nav-link"
                 @Html.Raw(collapseToggle)>Slideshow</a>
             </li>
-            <li class="nav-item">
+            @*<li class="nav-item">
                 <a href="@Url.Action("Index", "Registry")" class="nav-link">Registry</a>
-            </li>
+            </li>*@
             <li class="nav-item">
                 <a href="@Url.Action("Index", "Home")#rsvp" class="nav-link">RSVP</a>
             </li>
@@ -36,12 +36,12 @@
                 </li>
             }
         </ul>
-        <ul class="d-flex">
+        @*<ul class="d-flex">
             @{
                 string userAction = User.Identity?.IsAuthenticated == true ? "Logout" : "Login";
             }
             <li class="nav-item"><a href="@Url.Action(userAction, "User")"
                     class="btn btn-light btn-small">@userAction</a></li>
-        </ul>
+        </ul>*@
     </div>
 </div>
