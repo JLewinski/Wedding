@@ -15,6 +15,28 @@ namespace Wedding.Controllers
 
         public IActionResult Index()
         {
+            try{
+                var randomNumberGenerator = new Random();
+                var slideshowImages = Directory.GetFiles(@"./wwwroot/dist/img/slideshow")
+                    .Select(x =>
+                    {
+                        int width, height;
+                        using(var img = Image.Load(x))
+                        {
+                            width = img.Width;
+                            height = img.Height;
+                        }
+                        
+                        return (x.Substring(9), width <= height);
+                    })
+                    .OrderBy(x => randomNumberGenerator.Next())
+                    .ToList();
+
+                ViewData["slideshowImages"] = slideshowImages;
+            }
+            catch{
+
+            }
             return View();
         }
 

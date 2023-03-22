@@ -1,5 +1,19 @@
+@{
+    bool hasImages = ViewData.TryGetValue("slideshowImages", out var slideshowImagePaths);
+}
+
 <div class="slideshow-container">
-    <div class="mySlides fade show" style="display:block">
+    @if (hasImages)
+    {
+        foreach (var(imagePath, isPortrait) in (slideshowImagePaths as IEnumerable<(string, bool)>) ?? new List<(string, bool)>())
+        {
+            <div class="mySlides fade show" style="display:block">
+                <img class="@(isPortrait ? "portrait" : "")" src="@imagePath" style="width:100%;">
+                <div class="text"></div>
+            </div>
+        }
+    }
+    @*<div class="mySlides fade show" style="display:block">
         <img class="portrait" src="~/dist/img/slideshow/1.jpg" style="width:100%;">
         <div class="text"></div>
     </div>
@@ -80,7 +94,7 @@
     <div class="mySlides fade">
         <img class="portrait" src="~/dist/img/slideshow/21.jpg" style="width:100%">
         <div class="text"></div>
-    </div>
+    </div>*@
     <div id="prev-slide-btn" class="prev">&#10094;</div>
     <div id="next-slide-btn" class="next">&#10095;</div>
 </div>
