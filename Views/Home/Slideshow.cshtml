@@ -1,100 +1,14 @@
-@{
-    bool hasImages = ViewData.TryGetValue("slideshowImages", out var slideshowImagePaths);
-}
-
-<div class="slideshow-container">
-    @if (hasImages)
-    {
-        foreach (var(imagePath, isPortrait) in (slideshowImagePaths as IEnumerable<(string, bool)>) ?? new List<(string, bool)>())
+@if (ViewData.TryGetValue("slideshowImages", out var slideshowImagePaths))
+{
+    <div class="slideshow-container">
+        @foreach (var image in (slideshowImagePaths as IEnumerable<Wedding.Data.ImageLocation>) ?? new List<Wedding.Data.ImageLocation>())
         {
             <div class="mySlides fade show" style="display:block">
-                <img class="@(isPortrait ? "portrait" : "")" src="@imagePath" style="width:100%;">
+                <img class="@(image.IsPortrait ? "portrait" : "")" src="@image.ImageSource" style="width:100%;">
                 <div class="text"></div>
             </div>
         }
-    }
-    @*<div class="mySlides fade show" style="display:block">
-        <img class="portrait" src="~/dist/img/slideshow/1.jpg" style="width:100%;">
-        <div class="text"></div>
+        <div id="prev-slide-btn" class="prev">&#10094;</div>
+        <div id="next-slide-btn" class="next">&#10095;</div>
     </div>
-    <div class="mySlides fade">
-        <img class="portrait" src="~/dist/img/slideshow/2.jpg" style="width:100%">
-        <div class="text"></div>
-    </div>
-    <div class="mySlides fade">
-        <img class="portrait" src="~/dist/img/slideshow/3.jpg" style="width:100%">
-        <div class="text"></div>
-    </div>
-    <div class="mySlides fade">
-        <img class="portrait" src="~/dist/img/slideshow/4.jpg" style="width:100%">
-        <div class="text"></div>
-    </div>
-    <div class="mySlides fade">
-        <img src="~/dist/img/slideshow/5.jpg" style="width:100%">
-        <div class="text"></div>
-    </div>
-    <div class="mySlides fade">
-        <img src="~/dist/img/slideshow/6.jpg" style="width:100%">
-        <div class="text"></div>
-    </div>
-    <div class="mySlides fade">
-        <img src="~/dist/img/slideshow/7.jpg" style="width:100%">
-        <div class="text"></div>
-    </div>
-    <div class="mySlides fade">
-        <img src="~/dist/img/slideshow/8.jpg" style="width:100%">
-        <div class="text"></div>
-    </div>
-    <div class="mySlides fade">
-        <img class="portrait" src="~/dist/img/slideshow/9.jpg" style="width:100%">
-        <div class="text"></div>
-    </div><div class="mySlides fade">
-        <img src="~/dist/img/slideshow/10.jpg" style="width:100%">
-        <div class="text"></div>
-    </div>
-    <div class="mySlides fade">
-        <img class="portrait" src="~/dist/img/slideshow/11.jpg" style="width:100%">
-        <div class="text"></div>
-    </div>
-    <div class="mySlides fade">
-        <img class="portrait" src="~/dist/img/slideshow/12.jpg" style="width:100%">
-        <div class="text"></div>
-    </div>
-    <div class="mySlides fade">
-        <img class="portrait" src="~/dist/img/slideshow/13.jpg" style="width:100%">
-        <div class="text"></div>
-    </div><div class="mySlides fade">
-        <img class="portrait" src="~/dist/img/slideshow/14.jpg" style="width:100%">
-        <div class="text"></div>
-    </div>
-    <div class="mySlides fade">
-        <img src="~/dist/img/slideshow/15.jpg" style="width:100%">
-        <div class="text"></div>
-    </div>
-    <div class="mySlides fade">
-        <img src="~/dist/img/slideshow/16.jpg" style="width:100%">
-        <div class="text"></div>
-    </div>
-    <div class="mySlides fade">
-        <img src="~/dist/img/slideshow/17.jpg" style="width:100%">
-        <div class="text"></div>
-    </div>
-    <div class="mySlides fade">
-        <img class="portrait" src="~/dist/img/slideshow/18.jpg" style="width:100%">
-        <div class="text"></div>
-    </div>
-    <div class="mySlides fade">
-        <img class="portrait" src="~/dist/img/slideshow/19.jpg" style="width:100%">
-        <div class="text"></div>
-    </div>
-    <div class="mySlides fade">
-        <img class="portrait" src="~/dist/img/slideshow/20.jpg" style="width:100%">
-        <div class="text"></div>
-    </div>
-    <div class="mySlides fade">
-        <img class="portrait" src="~/dist/img/slideshow/21.jpg" style="width:100%">
-        <div class="text"></div>
-    </div>*@
-    <div id="prev-slide-btn" class="prev">&#10094;</div>
-    <div id="next-slide-btn" class="next">&#10095;</div>
-</div>
+}

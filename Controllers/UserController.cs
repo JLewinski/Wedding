@@ -56,6 +56,7 @@ namespace Wedding.Controllers
             return RedirectToAction("Index", "Home");
         }
 
+#if DEBUG
         [HttpGet]
         [AllowAnonymous]
         public IActionResult Signup()
@@ -74,10 +75,6 @@ namespace Wedding.Controllers
                 ModelState.AddModelError(string.Empty, "A user with that email already exists");
             }
             var guest = await _context.Guests.FirstOrDefaultAsync(x => x.Email == viewModel.Email);
-            if (ModelState.IsValid && guest == null && viewModel.Email != "catholicgirl333@gmail.com")
-            {
-                ModelState.AddModelError(string.Empty, "There is no RSVP with that email");
-            }
             if (ModelState.IsValid)
             {
                 var user = new User
@@ -95,13 +92,14 @@ namespace Wedding.Controllers
                 }
                 _context.Add(user);
                 await _context.SaveChangesAsync();
-
+                
                 return await SignIn(user);
             }
 
             return View(viewModel);
 
         }
+#endif
 
         private async Task<IActionResult> SignIn(User user, string? returnUrl = null)
         {
