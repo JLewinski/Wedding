@@ -4,7 +4,8 @@
   "libraries": [
     {
       "library": "bootstrap@5.2.3",
-      "destination": "wwwroot/lib/bootstrap/"
+      "destination": "wwwroot/lib/bootstrap/",
+      "files": ["css/bootstrap.min.css", "js/bootstrap.bundle.min.js"]
     },
     {
       "library": "font-awesome@6.2.1",
@@ -12,7 +13,8 @@
     },
     {
       "library": "jquery@3.6.3",
-      "destination": "wwwroot/lib/jquery/"
+      "destination": "wwwroot/lib/jquery/",
+      "files": ["jquery.min.js"]
     }
   ]
 }
