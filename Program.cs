@@ -15,7 +15,8 @@ builder.Services.AddDbContext<WeddingContext>(options => options.UseSqlServer(co
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
-    .AddCookie(options => {
+    .AddCookie(options =>
+    {
         options.ExpireTimeSpan = TimeSpan.FromHours(2);
         options.SlidingExpiration = true;
         options.LoginPath = "/User/Login";
@@ -54,7 +55,8 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
-app.UseCookiePolicy(new CookiePolicyOptions{
+app.UseCookiePolicy(new CookiePolicyOptions
+{
     MinimumSameSitePolicy = SameSiteMode.Strict
 });
 

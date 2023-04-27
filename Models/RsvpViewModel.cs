@@ -7,7 +7,7 @@ namespace Wedding.Models
         [Required]
         public string Name { get; set; } = null!;
         [Required]
-        [Range(1, 20, ErrorMessage = "You must respond for at least one person.")]
+        [Range(0, 20, ErrorMessage = "Please let us know how many people are coming or enter 0 if you cannot make it.")]
         public byte NumberAttending { get; set; }
         [Required]
         [DataType(DataType.EmailAddress)]

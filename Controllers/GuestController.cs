@@ -1,9 +1,9 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using System.Diagnostics;
 using Wedding.Data;
 using Wedding.Models;
+using Wedding.Services;
 
 namespace Wedding.Controllers
 {
@@ -11,9 +11,9 @@ namespace Wedding.Controllers
     {
         private readonly ILogger<GuestController> _logger;
         private readonly WeddingContext _context;
-        private readonly Services.EmailService _email;
+        private readonly EmailService _email;
 
-        public GuestController(ILogger<GuestController> logger, WeddingContext context, Services.EmailService emailService)
+        public GuestController(ILogger<GuestController> logger, WeddingContext context, EmailService emailService)
         {
             _logger = logger;
             _context = context;
@@ -74,7 +74,8 @@ namespace Wedding.Controllers
                 //TODO: create page for guests to message the bride and groom
                 //TODO: show link for registry
                 var thankYou = new ThankYouViewModel(guest);
-                await _email.SendConfirmationEmail(thankYou, Url.Action("ThankYou", "Guest", thankYou));
+                var body = await EmailService.RenderViewToStringAsync("ThankYou", thankYou, ControllerContext);
+                await _email.SendConfirmationEmail(thankYou, body, Url.Action("ThankYou", "Guest", thankYou));
                 
 
                 return RedirectToAction(nameof(ThankYou), thankYou);
@@ -111,7 +112,8 @@ namespace Wedding.Controllers
 
                 await _context.SaveChangesAsync();
                 var thankYou = new ThankYouViewModel(guest);
-                await _email.SendConfirmationEmail(thankYou, Url.Action("ThankYou", "Guest", thankYou));
+                var body = await EmailService.RenderViewToStringAsync("ThankYou", thankYou, ControllerContext);
+                await _email.SendConfirmationEmail(thankYou, body, Url.Action("ThankYou", "Guest", thankYou));
                 return RedirectToAction(nameof(ThankYou), thankYou);
             }
             return View(viewModel);
