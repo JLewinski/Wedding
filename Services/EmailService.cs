@@ -12,10 +12,10 @@ namespace Wedding.Services
 {
     public class EmailOptions
     {
-        public string Host { get; init; }
+        public string Host { get; init; } = null!;
         public int Port { get; init; }
-        public string Username { get; init; }
-        public string Password { get; init; }
+        public string Username { get; init; } = null!;
+        public string Password { get; init; } = null!;
         public bool EnableSsl { get; init; }
         public bool UseCredentials { get; init; }
     }
