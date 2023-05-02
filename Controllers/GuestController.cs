@@ -40,7 +40,22 @@ namespace Wedding.Controllers
             //TODO: check if someone with that name/email/number is already in
             if (ModelState.IsValid)
             {
-                if (await _context.Guests.AnyAsync(x => x.GuestName == viewModel.Name || x.Email == viewModel.Email || x.PhoneNumber == viewModel.PhoneNumber))
+                if(viewModel.Email == "jacob@lewinskitech.com")
+                {
+                    //Force to make new user if I RSVP for someone
+                    viewModel.Email = string.Empty;
+                    if (viewModel.PhoneNumber == "2562034011")
+                    {
+                        //Force to make new user if I RSVP for someone
+                        viewModel.PhoneNumber = string.Empty;
+                    }
+                }
+                else if (viewModel.PhoneNumber == "2562034011")
+                {
+                    //Force to make new user if I RSVP for someone
+                    viewModel.PhoneNumber = string.Empty;
+                }
+                else if (await _context.Guests.AnyAsync(x => x.GuestName == viewModel.Name || x.Email == viewModel.Email || x.PhoneNumber == viewModel.PhoneNumber))
                 {
                     ModelState.AddModelError(string.Empty, "You have already submitted a RSVP. If you think this is wrong or need to change your RSVP please email jacob@lewinskitech.com");
                 }
