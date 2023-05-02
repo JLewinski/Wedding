@@ -68,7 +68,7 @@ namespace Wedding.Services
             _smtpClient?.Dispose();
         }
 
-        public async Task SendConfirmationEmail(ThankYouViewModel guest, string body, string url)
+        public async Task SendConfirmationEmail(ThankYouViewModel guest, string body)
         {
             var message = new MailMessage
             {

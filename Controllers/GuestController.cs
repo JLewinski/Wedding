@@ -88,10 +88,17 @@ namespace Wedding.Controllers
                 //TODO: once emails are working enable a reset password email
                 //TODO: create page for guests to message the bride and groom
                 //TODO: show link for registry
-                var thankYou = new ThankYouViewModel(guest);
-                var body = await EmailService.RenderViewToStringAsync("ThankYou", thankYou, ControllerContext);
-                await _email.SendConfirmationEmail(thankYou, body, Url.Action("ThankYou", "Guest", thankYou));
-                
+                var thankYou = new ThankYouViewModel(guest)
+                {
+                    Url = Url.Action("ThankYou", "Guest")
+                };
+                thankYou.Url = Url.Action("ThankYou", "Guest", thankYou);
+
+                if(thankYou.Email != string.Empty)
+                {
+                    var body = await EmailService.RenderViewToStringAsync("ThankYou", thankYou, ControllerContext);
+                    await _email.SendConfirmationEmail(thankYou, body);
+                }
 
                 return RedirectToAction(nameof(ThankYou), thankYou);
             }
@@ -126,9 +133,14 @@ namespace Wedding.Controllers
                 guest.GuestName = viewModel.GuestName;
 
                 await _context.SaveChangesAsync();
-                var thankYou = new ThankYouViewModel(guest);
+                var thankYou = new ThankYouViewModel(guest)
+                {
+                    Url = Url.Action("ThankYou", "Guest")
+                };
+                thankYou.Url = Url.Action("ThankYou", "Guest", thankYou);
+
                 var body = await EmailService.RenderViewToStringAsync("ThankYou", thankYou, ControllerContext);
-                await _email.SendConfirmationEmail(thankYou, body, Url.Action("ThankYou", "Guest", thankYou));
+                await _email.SendConfirmationEmail(thankYou, body);
                 return RedirectToAction(nameof(ThankYou), thankYou);
             }
             return View(viewModel);
