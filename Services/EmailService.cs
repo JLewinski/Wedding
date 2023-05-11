@@ -102,6 +102,10 @@ namespace Wedding.Services
             var razorViewEngine = serviceProvider.GetService(typeof(IRazorViewEngine)) as IRazorViewEngine;
             var tempDataProvider = serviceProvider.GetService(typeof(ITempDataProvider)) as ITempDataProvider;
 
+            if(razorViewEngine == null || tempDataProvider == null){
+                throw new NullReferenceException("Could not find service");
+            }
+
             using (var sw = new StringWriter())
             {
                 var viewResult = razorViewEngine.FindView(actionContext, viewName, !isPartial);

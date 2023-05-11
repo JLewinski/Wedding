@@ -26,7 +26,7 @@
         <tbody>
             @foreach (var guest in Model)
             {
-                <tr>
+                <tr class="@(guest.IsGoing != true ? "table-dark" : "")">
                     <td>@guest.GuestName</td>
                     <td>@(guest.IsGoing == true ? "GOING" : guest.IsGoing == false ? "NOT GOING" : "MAYBE")</td>
                     <td>@guest.NumberAdults</td>
