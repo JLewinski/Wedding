@@ -78,3 +78,19 @@ function setupCountdown() {
 }
 
 setupCountdown();
+
+function preventDoubleSubmit(){
+    document.querySelectorAll('form').forEach(form => {
+        form.addEventListener('submit', e => {
+            if (form.classList.contains('is-submitting')){
+                e.preventDefault();
+            } else {
+                form.classList.add('is-submitting');
+                setTimeout(() => {
+                    form.classList.remove('is_submitting');
+                    //TODO: possibly show user that he/she needs to resubmit the form
+                }, 5000);
+            }
+        });
+    })
+}
