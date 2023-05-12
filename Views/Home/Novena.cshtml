@@ -7,8 +7,6 @@
     var modDays = numDays % 4;
     bool isPetition = numDays < 54 / 2;
     bool isThanksgiving = numDays < 0 || numDays > 54 / 2;
-    string HailMary = "Hail Mary, full of grace, the Lord is with thee; blessed are you among women, and blessed is the fruit of thy womb, Jesus. Holy Mary, Mother of God, pray for us sinners now and at the hour of our death. Amen.";
-    
 }
 
 @section Style{
@@ -17,59 +15,7 @@
 
 
 <div class="container">
-    <ul id="contents" class="nav nav-pills" style="display: none;">
-        <li class="nav-item">
-            <a href="#intro" class="nav-link">Introduction</a>
-        </li>
-        <li class="nav-item dropdown">
-            <a href="" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown">Joyful</a>
-            <ul class="dropdown-menu">
-                <li><a href="#joyful_intro" class="dropdown-item">Intro</a></li>
-                <li><a href="#joyful_1" class="dropdown-item">1 - Annunciation</a></li>
-                <li><a href="#joyful_2" class="dropdown-item">2 - Visitation</a></li>
-                <li><a href="#joyful_3" class="dropdown-item">3 - Nativity</a></li>
-                <li><a href="#joyful_4" class="dropdown-item">4 - Presentation</a></li>
-                <li><a href="#joyful_5" class="dropdown-item">5 - Finding of the Child Jesus in the Temple</a></li>
-            </ul>
-        </li>
-        <li class="nav-item dropdown">
-            <a href="" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown">Sorrowful</a>
-            <ul class="dropdown-menu">
-                <li><a href="#sorrowful_intro" class="dropdown-item">Intro</a></li>
-                <li><a href="#sorrowful_1" class="dropdown-item">1 - Agony in the Garden</a></li>
-                <li><a href="#sorrowful_2" class="dropdown-item">2 - Scourging at the Pillar</a></li>
-                <li><a href="#sorrowful_3" class="dropdown-item">3 - Crowning with Thorns</a></li>
-                <li><a href="#sorrowful_4" class="dropdown-item">4 - Carrying of the Cross</a></li>
-                <li><a href="#sorrowful_5" class="dropdown-item">5 - Crucifixion</a></li>
-            </ul>
-        </li>
-        <li class="nav-item dropdown">
-            <a href="" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown">Glorious</a>
-            <ul class="dropdown-menu">
-                <li><a href="#glorious_intro" class="dropdown-item">Intro</a></li>
-                <li><a href="#glorious_1" class="dropdown-item">1 - Resurrection</a></li>
-                <li><a href="#glorious_2" class="dropdown-item">2 - Ascension</a></li>
-                <li><a href="#glorious_3" class="dropdown-item">3 - Pentecost</a></li>
-                <li><a href="#glorious_4" class="dropdown-item">4 - Assumption</a></li>
-                <li><a href="#glorious_5" class="dropdown-item">5 - Coronation</a></li>
-            </ul>
-        </li>
-        <li class="nav-item dropdown">
-            <a href="" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown">Luminus</a>
-            <ul class="dropdown-menu">
-                <li><a href="#luminus_intro" class="dropdown-item">Intro</a></li>
-                <li><a href="#luminus_1" class="dropdown-item">1 - Baptism</a></li>
-                <li><a href="#luminus_2" class="dropdown-item">2 - Wedding at Canna</a></li>
-                <li><a href="#luminus_3" class="dropdown-item">3 - Sermon on the Mount</a></li>
-                <li><a href="#luminus_4" class="dropdown-item">4 - Transifuration</a></li>
-                <li><a href="#luminus_5" class="dropdown-item">5 - Institution of the Eucharist</a></li>
-            </ul>
-        </li>
-        <li class="nav-item">
-            <a href="#conclusion" class="nav-link">Concluding Prayers</a>
-        </li>
-    </ul>
-    <h1>Fifty-Four Day Novena (<span id="day"></span>)</h1>
+    <h1>Fifty-Four Day Novena</h1>
     @if (numDays <= 0)
     {
         <div class="mystery">
@@ -87,9 +33,9 @@
     @if (modDays == 1)
     {
         <div id="joyful" class="mystery">
-            <h2>Joyful Mysteries</h2>
+            <h2>Day @numDays: Joyful Mysteries</h2>
+            <hr>
             <div id="joyful_intro">
-                <h3>Intro</h3>
                 <partial name="HailMary"/>
                 <p>Hail! Queen of the Most Holy Rosary, my Mother Mary, hail! At your feet I humbly pray and offer you a
                     crown of snow-white roses, to remind you of your joys. Each ten bound together, recalling to you a
@@ -164,9 +110,9 @@
     else if (modDays == 2)
     {
         <div id="sorrowful" class="mystery">
-            <h2>Sorrowful Mysteries</h2>
+            <h2>Day @numDays: Sorrowful Mysteries</h2>
+            <hr>
             <div id="sorrowful_intro">
-                <h3>Intro</h3>
                 <partial name="HailMary"/>
                 <p>Hail! Queen of the Most Holy Rosary, my Mother Mary, hail! At your feet I humbly pray and offer you a
                     crown of blood-red roses, in remembrance of the passion of your divine Son. Each ten bound together,
@@ -243,9 +189,9 @@
     else if (modDays == 3)
     {
         <div id="glorious" class="mystery">
-            <h2>Glorious Mysteries</h2>
+            <h2>Day @numDays: Glorious Mysteries</h2>
+            
             <div id="glorious_intro">
-                <h3>Intro</h3>
                 <partial name="HailMary"/>
                 <p>Hail! Queen of the Most Holy Rosary, my Mother Mary, hail! At your feet I humbly pray and offer you a
                     crown of royal-purple roses, to remind you of your glories. Each ten bound together, recalling to you a
@@ -324,9 +270,9 @@
     else
     {
         <div id="luminous" class="mystery">
-            <h2>Luminous Mysteries</h2>
+            <h2>Day @numDays: Luminous Mysteries</h2>
+            <hr>
             <div id="luminous_intro">
-                <h3>Intro</h3>
                 <partial name="HailMary"/>
                 <p>Hail! Queen of the Most Holy Rosary, my Mother Mary, hail! At your feet I humbly pray and offer you a
                     crown of bright-yellow roses, to remind you of the ministry of your Son. Each ten bound together,
