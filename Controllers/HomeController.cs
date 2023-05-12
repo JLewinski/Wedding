@@ -81,5 +81,10 @@ namespace Wedding.Controllers
         {
             return View();
         }
+
+        [Route("54DayNovena")]
+        public IActionResult Novena(){
+            return View();
+        }
     }
 }

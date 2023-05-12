@@ -78,7 +78,7 @@ namespace Wedding.Controllers
                     NumberAdults = viewModel.NumberAttending,
                     PhoneNumber = viewModel.PhoneNumber,
                     NumberChildren = 0,
-                    IsGoing = true,
+                    IsGoing = viewModel.NumberAttending > 0,
                     UserId = user.UserId
                 };
                 _context.Add(guest);

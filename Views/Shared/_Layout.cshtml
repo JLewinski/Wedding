@@ -28,10 +28,11 @@
         crossorigin="anonymous" referrerpolicy="no-referrer" asp-fallback-href="~/lib/font-awesome/css/all.min.css"
         asp-fallback-test-class="fab" asp-fallback-test-property="font-style" asp-fallback-test-value="normal" />
     <link rel="stylesheet" href="~/dist/css/nav.css" asp-append-version="true" />
+    @await RenderSectionAsync("Style", required: false)
 </head>
 
 <body>
-    <nav class="navbar navbar-dark navbar-expand-lg sticky-top">
+    <nav class="navbar navbar-dark navbar-expand-lg fixed-top">
         <partial name="Navigation"></partial>
     </nav>
     <main role="main">
@@ -51,6 +52,9 @@
             </div>
         </div>
     </footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.11.7/umd/popper.min.js"
+        integrity="sha512-uaZ0UXmB7NHxAxQawA8Ow2wWjdsedpRu7nJRSoI2mjnwtY8V5YiCWavoIpo1AhWPMLiW5iEeavmA3JJ2+1idUg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/js/bootstrap.min.js" integrity="sha512-1/RvZTcCDEUjY/CypiMz+iqqtaoQfAITmNSJY17Myp4Ms5mdxPS5UV7iOfdZoxcGhzFbOm6sntTKJppjvuhg4g==" crossorigin="anonymous" referrerpolicy="no-referrer"
             asp-fallback-src="~/lib/bootstrap/js/bootstrap.bundle.min.js"
             asp-fallback-test="window.bootstrap"></script>

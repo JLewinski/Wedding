@@ -1,0 +1,548 @@
+@{
+    Layout = "_Layout";
+    var weddingDay = new DateTime(2023, 7, 3).Date;
+    var today = DateTime.Now.Date;
+    var difference = weddingDay - today;
+    var numDays = 54 - difference.Days + 1;
+    var modDays = numDays % 4;
+    bool isPetition = numDays < 54 / 2;
+    bool isThanksgiving = numDays < 0 || numDays > 54 / 2;
+    string HailMary = "Hail Mary, full of grace, the Lord is with thee; blessed are you among women, and blessed is the fruit of thy womb, Jesus. Holy Mary, Mother of God, pray for us sinners now and at the hour of our death. Amen.";
+    
+}
+
+@section Style{
+    <link rel="stylesheet" href="~/dist/css/novena.css" />
+}
+
+
+<div class="container">
+    <ul id="contents" class="nav nav-pills" style="display: none;">
+        <li class="nav-item">
+            <a href="#intro" class="nav-link">Introduction</a>
+        </li>
+        <li class="nav-item dropdown">
+            <a href="" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown">Joyful</a>
+            <ul class="dropdown-menu">
+                <li><a href="#joyful_intro" class="dropdown-item">Intro</a></li>
+                <li><a href="#joyful_1" class="dropdown-item">1 - Annunciation</a></li>
+                <li><a href="#joyful_2" class="dropdown-item">2 - Visitation</a></li>
+                <li><a href="#joyful_3" class="dropdown-item">3 - Nativity</a></li>
+                <li><a href="#joyful_4" class="dropdown-item">4 - Presentation</a></li>
+                <li><a href="#joyful_5" class="dropdown-item">5 - Finding of the Child Jesus in the Temple</a></li>
+            </ul>
+        </li>
+        <li class="nav-item dropdown">
+            <a href="" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown">Sorrowful</a>
+            <ul class="dropdown-menu">
+                <li><a href="#sorrowful_intro" class="dropdown-item">Intro</a></li>
+                <li><a href="#sorrowful_1" class="dropdown-item">1 - Agony in the Garden</a></li>
+                <li><a href="#sorrowful_2" class="dropdown-item">2 - Scourging at the Pillar</a></li>
+                <li><a href="#sorrowful_3" class="dropdown-item">3 - Crowning with Thorns</a></li>
+                <li><a href="#sorrowful_4" class="dropdown-item">4 - Carrying of the Cross</a></li>
+                <li><a href="#sorrowful_5" class="dropdown-item">5 - Crucifixion</a></li>
+            </ul>
+        </li>
+        <li class="nav-item dropdown">
+            <a href="" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown">Glorious</a>
+            <ul class="dropdown-menu">
+                <li><a href="#glorious_intro" class="dropdown-item">Intro</a></li>
+                <li><a href="#glorious_1" class="dropdown-item">1 - Resurrection</a></li>
+                <li><a href="#glorious_2" class="dropdown-item">2 - Ascension</a></li>
+                <li><a href="#glorious_3" class="dropdown-item">3 - Pentecost</a></li>
+                <li><a href="#glorious_4" class="dropdown-item">4 - Assumption</a></li>
+                <li><a href="#glorious_5" class="dropdown-item">5 - Coronation</a></li>
+            </ul>
+        </li>
+        <li class="nav-item dropdown">
+            <a href="" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown">Luminus</a>
+            <ul class="dropdown-menu">
+                <li><a href="#luminus_intro" class="dropdown-item">Intro</a></li>
+                <li><a href="#luminus_1" class="dropdown-item">1 - Baptism</a></li>
+                <li><a href="#luminus_2" class="dropdown-item">2 - Wedding at Canna</a></li>
+                <li><a href="#luminus_3" class="dropdown-item">3 - Sermon on the Mount</a></li>
+                <li><a href="#luminus_4" class="dropdown-item">4 - Transifuration</a></li>
+                <li><a href="#luminus_5" class="dropdown-item">5 - Institution of the Eucharist</a></li>
+            </ul>
+        </li>
+        <li class="nav-item">
+            <a href="#conclusion" class="nav-link">Concluding Prayers</a>
+        </li>
+    </ul>
+    <h1>Fifty-Four Day Novena (<span id="day"></span>)</h1>
+    @if (numDays <= 0)
+    {
+        <div class="mystery">
+            <h2 id="intro">Introduction</h2>
+            <p>Originated in the late 19th century in Naples, Italy, the 54 Day Novena is attributed to a young girl
+                suffering
+                from an illness thought to be incurable. Calling on Mary for help, Mary appeared to her and promised her
+                healing
+                if she prayed three novenas. The girl did so, and was miraculously healed. In a later apparition, Mary
+                specified
+                that the full prayer should have 3 novenas in petition, and 3 novenas in thanksgiving. </p>
+            <a href="https://hallow.com/blog/how-to-pray-54-day-novena/">Source Hallow.com</a>
+        </div>
+    }
+    @if (modDays == 1)
+    {
+        <div id="joyful" class="mystery">
+            <h2>Joyful Mysteries</h2>
+            <div id="joyful_intro">
+                <h3>Intro</h3>
+                <partial name="HailMary"/>
+                <p>Hail! Queen of the Most Holy Rosary, my Mother Mary, hail! At your feet I humbly pray and offer you a
+                    crown of snow-white roses, to remind you of your joys. Each ten bound together, recalling to you a
+                    joyful mystery, with my petition for a particular grace.</p>
+                <p>O Holy Queen, dispenser of God’s graces and mother of all who invoke your holy name. Do not look upon my
+                    gift and fail to see its binding.</p>
+                @if (isPetition)
+                {
+                    <p class="petition"><span>Petition:</span> As you graciously receive my gift, I humbly implore you to
+                        receive my petition; from your bounty I rest assured that you will grant me the favor I so trustingly
+                        seek.</p>
+                }
+                @if (isThanksgiving)
+                {
+                    <p class="thanksgiving"><span>Thanksgiving:</span> As you graciously receive my gift, I kindly implore you
+                        to receive my thanksgiving; from your bounty you have granted me the favor I so trustingly sought.</p>
+                }
+            </div>
+            <div id="joyful_1">
+                <h3>First Joyful Mystery - The Annunciation</h3>
+                <p>O, Sweet Mother Mary, meditating on the Mystery of the Annunciation, when the angel Gabriel appeared
+                    to you with the news that you were to become the Mother of God. He greeted you with that sublime
+                    salutation, “Hail, full of grace! The Lord is with thee!” and you did humbly submit yourself to the
+                    will of the Father, responding: “Behold the handmaid of the Lord. Be it done unto me according to
+                    thy word” I humbly pray... </p>
+                <p>Decade</p>
+                <p>I bind these snow-white roses with a petition for the grace of <i>humility</i> and humbly lay this
+                    bouquet at your feet.</p>
+            </div>
+            <div id="joyful_2">
+                <h3>Second Joyful Mystery - The Visitation</h3>
+                <p>O, Sweet Mother Mary, meditating on the Mystery of the Visitation, when, upon your visit to your holy
+                    cousin, Elizabeth, she greeted you with the prophetic utterance, “Blessed art thou among women, and
+                    blessed is the fruit of thy womb!” and you answered with that canticle of canticles, the Magnificat,
+                    I humbly pray...</p>
+                <p>Decade</p>
+                <p>I bind these snow-white roses with a petition for the grace of <i>love towards my neighbor</i> and
+                    humbly lay this bouquet at your feet.</p>
+            </div>
+            <div id="joyful_3">
+                <h3>Third Joyful Mystery - The Nativity</h3>
+                <p>O, Sweet Mother Mary, meditating on the Mystery of the Nativity of Our Lord, when, your time being
+                    completed, you brought forth, O holy Virgin, the redeemer of the world in a stable at Bethlehem;
+                    whereupon choirs of angels filled the Heavens with their exultant song of praise “Glory to God in the
+                    highest, and on Earth peace to men of goodwill”, I humbly pray...</p>
+                <p>Decade</p>
+                <p>I bind these snow-white roses with a petition for the grace of <i>detachment from the world</i> and
+                    humbly lay this bouquet at your feet.</p>
+            </div>
+            <div id="joyful_4">
+                <h3>Fourth Joyful Mystery - The Presentation</h3>
+                <p>O, Sweet Mother Mary, meditating on the Mystery of the Presentation, when, in obedience to the Law of
+                    Moses, you presented the Child in the temple, where the holy prophet Simeon, taking the Child in his
+                    arms, offered thanks to God for allowing him to look upon his Savior, I humbly pray...</p>
+                <p>Decade</p>
+                <p>I bind these snow-white roses with a petition for the grace of <i>purity</i> and humbly lay this bouquet
+                    at your feet.</p>
+            </div>
+            <div id="joyful_5">
+                <h3>Fifth Joyful Mystery - The Finding of the Child Jesus in the Temple</h3>
+                <p>O, Sweet Mother Mary, meditating on the Mystery of the Finding of the Child Jesus in the Temple, when,
+                    having sought Him for three days, distressed and anxious at His absence, your heart was gladdened when
+                    you found Him in the temple speaking to the doctors; and upon your request, He obediently returned home,
+                    I humbly pray...</p>
+                <p>Decade</p>
+                <p>I bind these snow-white roses with a petition for the grace of true wisdom and humbly lay this bouquet at
+                    your feet. </p>
+            </div>
+            <a href="#conclusion">Concluding Prayers</a>
+        </div>
+    }
+    else if (modDays == 2)
+    {
+        <div id="sorrowful" class="mystery">
+            <h2>Sorrowful Mysteries</h2>
+            <div id="sorrowful_intro">
+                <h3>Intro</h3>
+                <partial name="HailMary"/>
+                <p>Hail! Queen of the Most Holy Rosary, my Mother Mary, hail! At your feet I humbly pray and offer you a
+                    crown of blood-red roses, in remembrance of the passion of your divine Son. Each ten bound together,
+                    recalling to you a sorrowful mystery, with my petition for a particular grace.</p>
+                <p>O Holy Queen, dispenser of God’s graces and mother of all who invoke your holy name. Do not look upon my
+                    gift and fail to see its binding.</p>
+                @if (isPetition)
+                {
+                    <p class="petition"><span>Petition:</span> As you graciously receive my gift, I humbly implore you to
+                        receive my petition; from your bounty I rest assured that you will grant me the favor I so trustingly
+                        seek.</p>
+                }
+                @if (isThanksgiving)
+                {
+                    <p class="thanksgiving"><span>Thanksgiving:</span> As you graciously receive my gift, I kindly implore you
+                        to receive my thanksgiving; from your bounty you have granted me the favor I so trustingly sought.</p>
+                }
+            </div>
+            <div id="sorrowful_1">
+                <h3>First Sorrowful Mystery - The Agony in the Garden</h3>
+                <p>O, Most Sorrowful Mother Mary, meditating on the Mystery of the Agony of Our Lord in the Garden, when, in
+                    the grotto of the Garden of Olives, Jesus saw the sins of the world unfolded before Him by Satan, who
+                    sought to dissuade Him from the sacrifice He was about to make; when, His soul shrinking from the sight,
+                    and His precious blood flowing from every pore at the vision of the torture and death He was to undergo,
+                    your own sufferings, dear Mother, the future sufferings of His Church, and His own sufferings in the
+                    Blessed Sacrament, He cried in anguish, “Abba! Father! If it be possible, let this chalice pass from
+                    Me!” but, immediately resigning Himself to His Father’s will, He prayed, “Not as I will, but as Thou
+                    wilt!”, I humbly pray...</p>
+                <p>Decade</p>
+                <p>I bind these blood-red roses with a petition for the grace of <i>uniformity with the will of God</i> and
+                    humbly lay this bouquet at your feet. </p>
+            </div>
+            <div id="sorrowful_2">
+                <h3>Second Sorrowful Mystery - The Scourging at the Pillar</h3>
+                <p>O, Most Sorrowful Mother Mary, meditating on the Mystery of the Scourging of Our Lord when, at Pilate’s
+                    command, your divine Son, stripped and bound to a pillar, was lacerated from head to foot with cruel
+                    scourges and His flesh torn away until His mortified body could bear no more, I humbly pray... </p>
+                <p>Decade</p>
+                <p>I bind these blood-red roses with a petition for the grace of <i>mortification of my senses</i> and
+                    humbly lay this bouquet at your feet.</p>
+            </div>
+            <div id="sorrowful_3">
+                <h3>Third Sorrowful Mystery - The Crowning with Thorns</h3>
+                <p>O, Most Sorrowful Mother Mary, meditating on the Mystery of the Crowning of Our Lord with thorns, when,
+                    the soldiers, binding about His head a crown of sharp thorns, showered blows upon it, driving the thorns
+                    deeply into His head; then, in mock adoration, knelt before Him, crying, “Hail, King of the Jews!”, I
+                    humbly pray... </p>
+                <p>Decade</p>
+                <p>I bind these blood-red roses with a petition for the grace of <i>courage in tough trials</i> and humbly
+                    lay this bouquet at your feet.</p>
+            </div>
+            <div id="sorrowful_4">
+                <h3>Fourth Sorrowful Mystery - The Carrying of the Cross</h3>
+                <p>O, Most Sorrowful Mother Mary, meditating on the Mystery of the Carrying of the Cross, when, with the
+                    heavy wood of the Cross upon His shoulders, your divine Son was dragged, weak and suffering, yet
+                    patient, through the streets, amidst the revilements of the people, to Calvary; falling often, but urged
+                    along by the cruel blows of His executioners, I humbly pray... </p>
+                <p>Decade</p>
+                <p>I bind these blood-red roses with a petition for the grace of <i>patience in times of adversity</i> and
+                    humbly lay this bouquet at your feet. </p>
+            </div>
+            <div id="sorrowful_5">
+                <h3>Fifth Sorrowful Mystery - The Crucifixion</h3>
+                <p>O, Most Sorrowful Mother Mary, meditating on the Mystery of the Crucifixion, when, your divine Son was
+                    nailed to the cross, upon which He died after three hours of indescribable agony, during which time He
+                    begged His Father forgiveness of His enemies, I humbly pray... </p>
+                <p>Decade</p>
+                <p>I bind these blood-red roses with a petition for the grace of <i>Love of my Enemies</i> and humbly lay
+                    this bouquet at your feet.</p>
+            </div>
+            <a href="#conclusion">Concluding Prayers</a>
+        </div>
+    }
+    else if (modDays == 3)
+    {
+        <div id="glorious" class="mystery">
+            <h2>Glorious Mysteries</h2>
+            <div id="glorious_intro">
+                <h3>Intro</h3>
+                <partial name="HailMary"/>
+                <p>Hail! Queen of the Most Holy Rosary, my Mother Mary, hail! At your feet I humbly pray and offer you a
+                    crown of royal-purple roses, to remind you of your glories. Each ten bound together, recalling to you a
+                    glorious mystery, with my petition for a particular grace.</p>
+                <p>O Holy Queen, dispenser of God’s graces and mother of all who invoke your holy name. Do not look upon my
+                    gift and fail to see its binding.</p>
+                @if (isPetition)
+                {
+                    <p class="petition"><span>Petition:</span> As you graciously receive my gift, I humbly implore you to
+                        receive my petition; from your bounty I rest assured that you will grant me the favor I so trustingly
+                        seek.</p>
+                }
+                @if (isThanksgiving)
+                {
+                    <p class="thanksgiving"><span>Thanksgiving:</span> As you graciously receive my gift, I kindly implore you
+                        to receive my thanksgiving; from your bounty you have granted me the favor I so trustingly sought.</p>
+                }
+            </div>
+            <div id="glorious_1">
+                <h3>First Glroious Mystery - The Resurrection</h3>
+                <p>O, Most Glorious Mother Mary, meditating on the Mystery of the Resurrection of Our Lord from the Dead,
+                    when, on the morning of the third day after His death and burial, He arose from the dead and appeared to
+                    you, dear Mother, and filled your heart with unspeakable joy; then appeared to the holy women and to His
+                    disciples, who adored Him as their risen God, I humbly pray... </p>
+                <p>Decade</p>
+                <p>I bind these royal-purple roses with a petition for the grace of <i>Faith</i> and humbly lay this bouquet
+                    at your feet. </p>
+            </div>
+            <div id="glorious_2">
+                <h3>Second Glroious Mystery - The Ascension</h3>
+                <p>O, Most Glorious Mother Mary, meditating on the Mystery of the Ascension, when your divine Son, after
+                    forty days on Earth, went to Mount Olivet accompanied by His disciples, where they adored Him for the
+                    last time, after which He promised to remain with them until the end of the world; then, extending His
+                    pierced hands over them in a final blessing, He ascended into heaven, I humbly pray..</p>
+                <p>Decade</p>
+                <p>I bind these royal-purple roses with a petition for the grace of <i>Hope</i> and humbly lay this bouquet
+                    at your feet. </p>
+            </div>
+            <div id="glorious_3">
+                <h3>Third Glroious Mystery - The Pentecost</h3>
+                <p>O, Most Glorious Mother Mary, meditating on the Mystery of the Descent of the Holy Spirit, when, the
+                    Apostles being assembled in the upper room in a house in Jerusalem, the Holy Spirit descended upon them
+                    in the form of fiery tongues, inflaming the hearts of the Apostles with the fire of divine love,
+                    teaching them all truths and giving to them the gift of tongues, and filling you with the plenitude of
+                    His grace, dear mother, inspired you to pray for the apostles and the first Christians, I humbly pray...
+                </p>
+                <p>Decade</p>
+                <p>I bind these royal-purple roses with a petition for the grace of <i>Love</i> and humbly lay this bouquet
+                    at your feet.</p>
+            </div>
+            <div id="glorious_4">
+                <h3>Fourth Glroious Mystery - The Assumption</h3>
+                <p>O, Most Glorious Mother Mary, meditating on the Mystery of your Assumption into Heaven, when, consumed
+                    with the desire to be united with your divine Son in Heaven, your soul departed from your body and
+                    united itself to Him, Who, out of the excessive love He bore for you, His Mother, whose virginal body
+                    was His first tabernacle, assumed your body into Heaven and there, amidst the acclaims of the angels and
+                    saints, reinfused into it your soul, I humbly pray...</p>
+                <p>Decade</p>
+                <p>I bind these royal-purple roses with a petition for the grace of the <i>desire for Heaven</i>, and humbly
+                    lay this bouquet at your feet.</p>
+            </div>
+            <div id="glorious_5">
+                <h3>Fifth Glroious Mystery - The Coronation</h3>
+                <p>O, Most Glorious Mother Mary, meditating on the Mystery of your Coronation in Heaven, when, upon your
+                    assumption, you were triply crowned as the August Queen of Heaven by God the Father as His beloved
+                    daughter, by God the Son as His dearest mother, and by God the Holy Spirit as His chosen spouse; the
+                    most perfect adorer of the Holy Trinity, pleading our cause as our most powerful and merciful mother
+                    until the end of time, through you, I humbly pray... </p>
+                <p>Decade</p>
+                <p>I bind these royal-purple roses with a petition for the grace of <i>Trust in your Intercession</i> and
+                    humbly lay this bouquet at your feet.</p>
+            </div>
+            <a href="#conclusion">Concluding Prayers</a>
+        </div>
+    }
+    else
+    {
+        <div id="luminous" class="mystery">
+            <h2>Luminous Mysteries</h2>
+            <div id="luminous_intro">
+                <h3>Intro</h3>
+                <partial name="HailMary"/>
+                <p>Hail! Queen of the Most Holy Rosary, my Mother Mary, hail! At your feet I humbly pray and offer you a
+                    crown of bright-yellow roses, to remind you of the ministry of your Son. Each ten bound together,
+                    recalling to you a luminous mystery, with my petition for a particular grace.</p>
+                <p>O Holy Queen, dispenser of God’s graces and mother of all who invoke your holy name. Do not look upon my
+                    gift and fail to see its binding.</p>
+                @if (isPetition)
+                {
+                    <p class="petition"><span>Petition:</span> As you graciously receive my gift, I humbly implore you to
+                        receive my petition; from your bounty I rest assured that you will grant me the favor I so trustingly
+                        seek.</p>
+                }
+                @if (isThanksgiving)
+                {
+                    <p class="thanksgiving"><span>Thanksgiving:</span> As you graciously receive my gift, I kindly implore you
+                        to receive my thanksgiving; from your bounty you have granted me the favor I so trustingly sought.</p>
+                }
+            </div>
+            <div id="luminous_1">
+                <h3>First Luminous Mystery - The Baptism</h3>
+                <p>O, Courageous Mother Mary, meditating on the Mystery of the Baptism of Jesus in the Jordan River, when
+                    your Son, as an example to all, insisted on being baptized by His cousin John and the sky opened and the
+                    Holy Spirit came down to Him like a dove and a voice from Heaven said, "You are my own dear Son in whom
+                    I am well pleased", I humbly pray... </p>
+                <p>Decade</p>
+                <p>I bind these bright-yellow roses with a petition for the grace of <i>Openness to the Holy Spirit</i> and
+                    humbly lay this bouquet at your feet. </p>
+            </div>
+            <div id="luminous_2">
+                <h3>Second Luminous Mystery - The Wedding at Canna</h3>
+                <p>O, Courageous Mother Mary, meditating on the Mystery of the First Miracle of Jesus at the Wedding Feast
+                    at Cana, when at your urging, your Son performed the first of His many miracles by helping a couple
+                    celebrate their marriage, by changing water into wine of such quality that the chief steward upbraided
+                    the host by saying, "Usually people serve the best wine first and save the cheaper wine for last, but
+                    you have saved the choice wine for last", I humbly pray... </p>
+                <p>Decade</p>
+                <p>I bind these bright-yellow roses with a petition for the grace of <i>Manifestation through Faith</i> and
+                    humbly lay this bouquet at your feet.</p>
+            </div>
+            <div id="luminous_3">
+                <h3>Third Luminous Mystery - The Sermon on the Mount</h3>
+                <p>O, Courageous Mother Mary, meditating on the Mystery of the Proclamation of the Kingdom of God, when your
+                    Son revealed that the reign of God has already begun "within us" and we are called to conversion and
+                    forgiveness, praying "Your Kingdom come, Your will be done, on Earth as it is in Heaven," I humbly
+                    pray...</p>
+                <p>Decade</p>
+                <p>I bind these bright-yellow roses with a petition for the grace of <i>Trust in God</i> and humbly lay this
+                    bouquet at your feet. </p>
+            </div>
+            <div id="luminous_4">
+                <h3>Fourth Luminous Mystery - The Transifuration</h3>
+                <p>O, Courageous Mother Mary, meditating on the Mystery of the Transfiguration, when your Son revealed His
+                    glory to His three disciples, appearing on a mountain with Moses and Elijah, His face shining like the
+                    sun and a voice from heaven proclaiming, "This is my beloved Son...Listen to him", I humbly pray... </p>
+                <p>Decade</p>
+                <p>I bind these bright-yellow roses with a petition for the grace of <i>Desire for Holiness</i> and humbly
+                    lay this bouquet at your feet. </p>
+            </div>
+            <div id="luminous_5">
+                <h3>Fifth Luminous Mystery - The Institution of the Eucharist</h3>
+                <p>O, Courageous Mother Mary, meditating on the Mystery of the Institution of the Sacrament of the
+                    Eucharist, when on the day before He died your Son celebrated the Passover with His disciples and took
+                    bread and gave it to them saying, "Take and eat; this is My body" and when dinner was finished He took a
+                    cup of wine and shared it with them saying, "Take and drink; this is My blood, which will be given up
+                    for you; do this in memory of Me", I humbly pray... </p>
+                <p>Decade</p>
+                <p>I bind these bright-yellow roses with a petition for the grace of <i>Adoration of the Eucharist</i> and
+                    humbly lay this bouquet at your feet.</p>
+            </div>
+            <a href="#conclusion">Concluding Prayers</a>
+        </div>
+    }
+    <div id="conclusion" class="mystery active">
+        <h2>Concluding Prayers</h2>
+        <h3>Spiritual Communion</h3>
+        <p>O my Jesus, truly present in the most Holy Sacrament of the altar, since I cannot now receive you now under
+            the Sacramental Veil, I beg of you, with a heart full of love and longing, to come spiritually into my soul
+            through the immaculate heart of Your most Holy Mother and abide with me forever. You in me and I in You; in
+            time and in eternity; in Mary.</p>
+        <h3>Novena Prayers</h3>
+        @{
+            string intention = "the gift of peace and discernment during the rest of the engagment; a happy wedding day; and a good and holy marriage";
+            if (isPetition)
+            {
+                <p class="petition"><span>Petition:</span> Sweet Mother Mary, I offer you this Spiritual Communion to bind my
+                    bouquets in a wreath to place upon your brow. O my Mother! Look with favor upon my gift, and in your love
+                    obtain for me @intention.</p>
+            }
+            else
+            {
+                <p class="thanksgiving"><span>Thanksgiving:</span> Sweet Mother Mary, I offer you this Spiritual Communion to
+                    bind my bouquets in a wreath to place upon your brow in thanksgiving for @intention.</p>
+            }
+        }
+
+        <h3>Prayers</h3>
+        <partial name="HailMary"/>
+        <div class="row prayer">
+            <div class="col">
+                <p>Hail, Holy Queen, Mother of Mercy, our life, our sweetness and our hope. To you do we
+                    cry, poor banished children of Eve. To you do we send up our sighs, mourning and weeping in this
+                    valley of tears. Turn then, most gracious advocate, your eyes of mercy toward us, and after this
+                    exile show unto us the blessed fruit of your womb, Jesus. O clement, O loving, O sweet Virgin Mary.
+                </p>
+            </div>
+            <div class="col">
+                <p>Salve, Regina, mater misericordiae; vita, dulcedo et spes nostra, salve. Ad te clamamus exsules filii
+                    Hevae. Ad te suspiramus gementes et flentes in hac lacrimarum valle. Eia ergo, advocata nostra,
+                    illos tuos misericordes oculos ad nos converte. Et Iesum, benedictum fructum ventris tui, nobis post
+                    hoc exsilium ostende. O clemens, o pia, o dulcis Virgo Maria.</p>
+            </div>
+        </div>
+        <div class="row prayer">
+            <div class="col">
+                <p>V. Pray for us, O holy Mother of God.</p>
+                <p>R. That we may be made worthy of the promises of Christ.</p>
+            </div>
+            <div class="col">
+                <p>V. Ora pro nobis, sancta Dei Genitrix.</p>
+                <p>R. Ut digni efficamur promissionibus Christi.</p>
+            </div>
+        </div>
+        <h3>Litany of the Blessed Virgin Mary</h3>
+        <div class="litany">
+            <p>Lord, have mercy</p>
+            <p class="response">Lord, have mercy</p>
+            <p>Chirst, have mercy</p>
+            <p class="response">Christ, have mercy</p>
+            <p>Lord, have mercy</p>
+            <p class="response">Lord, have mercy</p>
+            <p>Christ, hear us</p>
+            <p class="response">Christ, graciously hear us</p>
+            <p>God the Father of Heaven</p>
+            <p class="response">Have mercy on us</p>
+            <p>God the Son, Redeemer of the world</p>
+            <p class="response">Have mercy on us</p>
+            <p>God the Holy Spirit</p>
+            <p class="response">Have mercy on us</p>
+            <p>Holy Trinity, One God</p>
+            <p class="response">Have mercy on us</p>
+            <p>Holy Mary</p>
+            <p class="response">Pray for us...</p>
+            <div class="row mb-2">
+                <div class="col-md">
+                    <p>Holy Mother of God</p>
+                    <p>Holy Mother of God</p>
+                    <p>Holy Virgin of virgins </p>
+                    <p>Mother of Christ </p>
+                    <p>Mother of divine grace </p>
+                    <p>Mother most pure</p>
+                    <p>Mother most chaste </p>
+                    <p>Mother inviolate </p>
+                    <p>Mother undefiled </p>
+                    <p>Mother most amiable </p>
+                    <p>Mother most admirable </p>
+                    <p>Mother of good counsel </p>
+                    <p>Mother of our Creator </p>
+                    <p>Mother of our Savior </p>
+                    <p>Virgin most prudent </p>
+                    <p>Virgin most venerable </p>
+                </div>
+                <div class="col-md">
+                    <p>Virgin most renowned </p>
+                    <p>Virgin most powerful </p>
+                    <p>Virgin most merciful </p>
+                    <p>Virgin most faithful </p>
+                    <p>Mirror of justice </p>
+                    <p>Seat of wisdom </p>
+                    <p>Cause of our joy </p>
+                    <p>Spiritual vessel </p>
+                    <p>Vessel of honor </p>
+                    <p>Singular vessel of devotion </p>
+                    <p>Mystical rose </p>
+                    <p>Tower of David </p>
+                    <p>Tower of ivory </p>
+                    <p>House of gold</p>
+                    <p>Ark of the covenant </p>
+                    <p>Gate of Heaven</p>
+                    <p>Morning star </p>
+                </div>
+                <div class="col-md">
+                    <p>Health of the sick </p>
+                    <p>Refuge of sinners </p>
+                    <p>Comforter of the afflicted </p>
+                    <p>Help of Christians </p>
+                    <p>Queen of Angels </p>
+                    <p>Queen of Patriarchs </p>
+                    <p>Queen of Prophets </p>
+                    <p>Queen of Apostles </p>
+                    <p>Queen of Martyrs </p>
+                    <p>Queen of Confessors </p>
+                    <p>Queen of Virgins </p>
+                    <p>Queen of all Saints </p>
+                    <p>Queen conceived without original sin </p>
+                    <p>Queen assumed into Heaven </p>
+                    <p>Queen of the most Holy Rosary </p>
+                    <p>Queen of the Family</p>
+                    <p>Queen of Peace</p>
+                </div>
+            </div>
+            <p>Lamb of God, who takes away the sins of the world</p>
+            <p class="response">Spare us, O Lord</p>
+            <p>Lamb of God, who takes away the sins of the world</p>
+            <p class="response">Graciously hear us, O Lord</p>
+            <p>Lamb of God, who takes away the sins of the world</p>
+            <p class="response">Have mercy on us</p>
+            <p>V. Pray for us, O Holy Mother of God</p>
+            <p>R. That we may be made worthy of the promises of Christ</p>
+            <p><i>Let us pray:</i> Lord God, give to Your people the joy of continual health in mind and body. With the
+                prayers of the Virgin Mary to help us, guide us through the sorrows of this life to eternal happiness in
+                the life to come. Grant this through our Lord Jesus Christ, Your Son, who lives and reigns, with You and
+                the Holy Spirit, God, forever and ever. Amen.</p>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    <script src="./dist/js/novena.js"></script>
+}
