@@ -1,0 +1,19 @@
+@model bool
+
+<p>
+    O Holy Queen, dispenser of God’s graces and mother of all who invoke your holy name. Do not look upon my
+    gift and fail to see its binding.As you graciously receive my gift, I humbly implore you to
+    receive my
+    @if (Model)
+    {
+        <text>
+            petition; from your bounty I rest assured that you will grant me the favor I so trustingly seek.
+        </text>
+    }
+    else
+    {
+        <text>
+            thanksgiving; from your bounty you have granted me the favor I so trustingly sought.
+        </text>
+    }
+</p>

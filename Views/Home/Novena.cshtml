@@ -36,24 +36,16 @@
             <h2>Day @numDays: Joyful Mysteries</h2>
             <hr>
             <div id="joyful_intro">
+                <h3>Novena Beginning Prayers</h3>
+                <h4>Hail Mary</h4>
                 <partial name="HailMary"/>
+                <h4>@(isPetition ? "Petition" : "Thanksgiving")</h4>
                 <p>Hail! Queen of the Most Holy Rosary, my Mother Mary, hail! At your feet I humbly pray and offer you a
                     crown of snow-white roses, to remind you of your joys. Each ten bound together, recalling to you a
                     joyful mystery, with my petition for a particular grace.</p>
-                <p>O Holy Queen, dispenser of God’s graces and mother of all who invoke your holy name. Do not look upon my
-                    gift and fail to see its binding.</p>
-                @if (isPetition)
-                {
-                    <p class="petition"><span>Petition:</span> As you graciously receive my gift, I humbly implore you to
-                        receive my petition; from your bounty I rest assured that you will grant me the favor I so trustingly
-                        seek.</p>
-                }
-                @if (isThanksgiving)
-                {
-                    <p class="thanksgiving"><span>Thanksgiving:</span> As you graciously receive my gift, I kindly implore you
-                        to receive my thanksgiving; from your bounty you have granted me the favor I so trustingly sought.</p>
-                }
+                <partial name="NovenaStart" model="@isPetition"/>
             </div>
+            <partial name="RosaryStart"/>
             <div id="joyful_1">
                 <h3>First Joyful Mystery - The Annunciation</h3>
                 <p>O, Sweet Mother Mary, meditating on the Mystery of the Annunciation, when the angel Gabriel appeared
@@ -113,24 +105,16 @@
             <h2>Day @numDays: Sorrowful Mysteries</h2>
             <hr>
             <div id="sorrowful_intro">
+                <h3>Novena Beginning Prayers</h3>
+                <h4>Hail Mary</h4>
                 <partial name="HailMary"/>
+                <h4>@(isPetition ? "Petition" : "Thanksgiving")</h4>
                 <p>Hail! Queen of the Most Holy Rosary, my Mother Mary, hail! At your feet I humbly pray and offer you a
                     crown of blood-red roses, in remembrance of the passion of your divine Son. Each ten bound together,
                     recalling to you a sorrowful mystery, with my petition for a particular grace.</p>
-                <p>O Holy Queen, dispenser of God’s graces and mother of all who invoke your holy name. Do not look upon my
-                    gift and fail to see its binding.</p>
-                @if (isPetition)
-                {
-                    <p class="petition"><span>Petition:</span> As you graciously receive my gift, I humbly implore you to
-                        receive my petition; from your bounty I rest assured that you will grant me the favor I so trustingly
-                        seek.</p>
-                }
-                @if (isThanksgiving)
-                {
-                    <p class="thanksgiving"><span>Thanksgiving:</span> As you graciously receive my gift, I kindly implore you
-                        to receive my thanksgiving; from your bounty you have granted me the favor I so trustingly sought.</p>
-                }
+                <partial name="NovenaStart"/>
             </div>
+            <partial name="RosaryStart"/>
             <div id="sorrowful_1">
                 <h3>First Sorrowful Mystery - The Agony in the Garden</h3>
                 <p>O, Most Sorrowful Mother Mary, meditating on the Mystery of the Agony of Our Lord in the Garden, when, in
@@ -190,26 +174,17 @@
     {
         <div id="glorious" class="mystery">
             <h2>Day @numDays: Glorious Mysteries</h2>
-            
             <div id="glorious_intro">
+                <h3>Novena Beginning Prayers</h3>
+                <h4>Hail Mary</h4>
                 <partial name="HailMary"/>
+                <h4>@(isPetition ? "Petition" : "Thanksgiving")</h4>
                 <p>Hail! Queen of the Most Holy Rosary, my Mother Mary, hail! At your feet I humbly pray and offer you a
                     crown of royal-purple roses, to remind you of your glories. Each ten bound together, recalling to you a
                     glorious mystery, with my petition for a particular grace.</p>
-                <p>O Holy Queen, dispenser of God’s graces and mother of all who invoke your holy name. Do not look upon my
-                    gift and fail to see its binding.</p>
-                @if (isPetition)
-                {
-                    <p class="petition"><span>Petition:</span> As you graciously receive my gift, I humbly implore you to
-                        receive my petition; from your bounty I rest assured that you will grant me the favor I so trustingly
-                        seek.</p>
-                }
-                @if (isThanksgiving)
-                {
-                    <p class="thanksgiving"><span>Thanksgiving:</span> As you graciously receive my gift, I kindly implore you
-                        to receive my thanksgiving; from your bounty you have granted me the favor I so trustingly sought.</p>
-                }
+                <partial name="NovenaStart" model="@isPetition"/>
             </div>
+            <partial name="RosaryStart"/>
             <div id="glorious_1">
                 <h3>First Glroious Mystery - The Resurrection</h3>
                 <p>O, Most Glorious Mother Mary, meditating on the Mystery of the Resurrection of Our Lord from the Dead,
@@ -273,24 +248,16 @@
             <h2>Day @numDays: Luminous Mysteries</h2>
             <hr>
             <div id="luminous_intro">
+                <h3>Novena Beginning Prayers</h3>
+                <h4>Hail Mary</h4>
                 <partial name="HailMary"/>
+                <h4>@(isPetition ? "Petition" : "Thanksgiving")</h4>
                 <p>Hail! Queen of the Most Holy Rosary, my Mother Mary, hail! At your feet I humbly pray and offer you a
                     crown of bright-yellow roses, to remind you of the ministry of your Son. Each ten bound together,
                     recalling to you a luminous mystery, with my petition for a particular grace.</p>
-                <p>O Holy Queen, dispenser of God’s graces and mother of all who invoke your holy name. Do not look upon my
-                    gift and fail to see its binding.</p>
-                @if (isPetition)
-                {
-                    <p class="petition"><span>Petition:</span> As you graciously receive my gift, I humbly implore you to
-                        receive my petition; from your bounty I rest assured that you will grant me the favor I so trustingly
-                        seek.</p>
-                }
-                @if (isThanksgiving)
-                {
-                    <p class="thanksgiving"><span>Thanksgiving:</span> As you graciously receive my gift, I kindly implore you
-                        to receive my thanksgiving; from your bounty you have granted me the favor I so trustingly sought.</p>
-                }
+                <partial name="NovenaStart" model="@isPetition"/>
             </div>
+            <partial name="RosaryStart"/>
             <div id="luminous_1">
                 <h3>First Luminous Mystery - The Baptism</h3>
                 <p>O, Courageous Mother Mary, meditating on the Mystery of the Baptism of Jesus in the Jordan River, when
