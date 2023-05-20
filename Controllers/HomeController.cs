@@ -86,5 +86,16 @@ namespace Wedding.Controllers
         public IActionResult Novena(){
             return View();
         }
+
+        [Route("rd")]
+        public IActionResult RehearsalDinnerRedirect()
+        {
+            return RedirectToActionPermanent("RehearsalDinner");
+        }
+
+        public IActionResult RehearsalDinner()
+        {
+            return View();
+        }
     }
 }
