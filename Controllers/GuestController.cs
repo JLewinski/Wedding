@@ -153,6 +153,12 @@ namespace Wedding.Controllers
                 guest.GuestName = viewModel.GuestName;
 
                 await _context.SaveChangesAsync();
+
+                if (User.IsInRole("Admin"))
+                {
+                    return RedirectToAction("Index");
+                }
+
                 var thankYou = new ThankYouViewModel(guest)
                 {
                     Url = Url.Action("ThankYou", "Guest")
