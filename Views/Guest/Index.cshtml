@@ -21,6 +21,7 @@
                 <th>Children</th>
                 <th>Email</th>
                 <th>Phone Number</th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
@@ -33,6 +34,7 @@
                     <td>@guest.NumberChildren</td>
                     <td>@guest.Email</td>
                     <td>@guest.PhoneNumber</td>
+                    <td><a class="btn fa fa-edit edit-guest-btn" data-user-id="@guest.UserId" asp-action="Change" asp-route-id="@guest.UserId"></a></td>
                 </tr>
             }
         </tbody>

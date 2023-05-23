@@ -21,10 +21,28 @@ namespace Wedding.Controllers
         }
 
         [Authorize(Roles = "Admin")]
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int order = 0)
         {
-            var guests = await _context.Guests.ToListAsync();
-            return View(guests);
+            IQueryable<Guest> guestQuery = _context.Guests;
+
+            switch (order)
+            {
+                case 0:
+                    guestQuery = guestQuery.OrderByDescending(x => x.DateModified).ThenBy(x => x.GuestName);
+                    break;
+                case 1:
+                    guestQuery = guestQuery.OrderBy(x => x.GuestName);
+                    break;
+                case 2:
+                    guestQuery = guestQuery.OrderByDescending(x => x.IsGoing).ThenBy(x => x.GuestName);
+                    break;
+                default:
+                    guestQuery = guestQuery.OrderByDescending(x => x.DateModified)
+                        .ThenBy(x => x.GuestName);
+                    break;
+            }
+
+            return View(await guestQuery.ToListAsync());
         }
 
         [HttpGet]
