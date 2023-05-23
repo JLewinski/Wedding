@@ -79,7 +79,7 @@ namespace Wedding.Controllers
 
         public IActionResult Hacker()
         {
-            return View();
+            return View("Error", new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
 
         [Route("54DayNovena")]

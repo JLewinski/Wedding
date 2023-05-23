@@ -40,7 +40,7 @@ namespace Wedding.Controllers
             //TODO: check if someone with that name/email/number is already in
             if (ModelState.IsValid)
             {
-                if(viewModel.Email == "jacob@lewinskitech.com")
+                if (viewModel.Email == "jacob@lewinskitech.com")
                 {
                     //Force to make new user if I RSVP for someone
                     viewModel.Email = string.Empty;
@@ -79,7 +79,8 @@ namespace Wedding.Controllers
                     PhoneNumber = viewModel.PhoneNumber,
                     NumberChildren = 0,
                     IsGoing = viewModel.NumberAttending > 0,
-                    UserId = user.UserId
+                    UserId = user.UserId,
+                    DateModified = DateTime.Now
                 };
                 _context.Add(guest);
                 await _context.SaveChangesAsync();
@@ -94,7 +95,7 @@ namespace Wedding.Controllers
                 };
                 thankYou.Url = Url.Action("ThankYou", "Guest", thankYou);
 
-                if(thankYou.Email != string.Empty)
+                if (thankYou.Email != string.Empty)
                 {
                     var body = await EmailService.RenderViewToStringAsync("ThankYou", thankYou, ControllerContext);
                     await _email.SendConfirmationEmail(thankYou, body);
@@ -122,7 +123,8 @@ namespace Wedding.Controllers
             if (ModelState.IsValid)
             {
                 var guest = await _context.Guests.FindAsync(viewModel.UserId);
-                if(guest == null){
+                if (guest == null)
+                {
                     return RedirectToAction("Index", "Home");
                 }
                 guest.NumberChildren = viewModel.NumberChildren;
@@ -149,7 +151,7 @@ namespace Wedding.Controllers
         public async Task<IActionResult> Note(Guid id)
         {
             var guest = await _context.Guests.FindAsync(id);
-            if(guest == null)
+            if (guest == null)
             {
                 return RedirectToAction(nameof(HomeController.Hacker), "Home");
             }

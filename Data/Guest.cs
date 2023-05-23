@@ -12,6 +12,7 @@ namespace Wedding.Data
         public string GuestName { get; set; } = null!;
         public string Email { get; set; } = null!;
         public string PhoneNumber { get; set; } = null!;
+        public DateTime DateModified { get; set; }
 
     }
 }
