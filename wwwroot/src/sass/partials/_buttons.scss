@@ -10,15 +10,18 @@
 	border-radius: 40px;
 	display: inline-block;
 	text-transform: uppercase;
-
-		color: $accent-color;
 }
-.btn:hover, .btn:focus {
-	color: $white-color;
+
+.btn-hero {
+	color: $accent-color;
 	border-color: $accent-color;
+	background-color: $white-color;
+}
+
+.btn-hero:hover, .btn-light:focus {
+	color: $white-color;
+	// border-color: $accent-color;
 	background-color: $accent-color;
-
-
 }
 /*.btn-white {
 	color: $white-color;

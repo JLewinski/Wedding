@@ -97,5 +97,10 @@ namespace Wedding.Controllers
         {
             return View();
         }
+
+        public IActionResult Unsubscribe(string id)
+        {
+            return View(id);
+        }
     }
 }

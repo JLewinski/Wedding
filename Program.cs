@@ -32,7 +32,6 @@ builder.Services.AddElmah<SqlErrorLog>(options =>
     options.Path = "/Elmah";
     options.OnPermissionCheck = context => context.User.IsInRole("Admin");
     options.ConnectionString = connectionString;
-    //options.SqlServerDatabaseSchemaName = "Error";
 });
 
 var app = builder.Build();
