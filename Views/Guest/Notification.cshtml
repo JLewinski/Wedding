@@ -1,0 +1,25 @@
+@model ThankYouViewModel
+@{
+    ViewData["Title"] = "RSVP Notification";
+    Layout = "_LayoutEmail";
+}
+<div id="email">
+    <table align="right" role="presentation">
+        <tr>
+            <td>
+                <a class="subtle-link" href="https://jacobandelisa.com/guest">View in Browser</a>
+            </td>
+        <tr>
+    </table>
+
+    <table role="presentation" width="100%">
+        <tr>
+
+            <td bgcolor="#65737e" align="center" style="color: white;">
+
+                <h1>RSVP Notification</h1>
+                <p>@Model.Name is @(Model.IsComing ? "" : "not ")coming</p>
+            </td>
+    </table>
+
+</div>

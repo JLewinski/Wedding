@@ -55,29 +55,12 @@ namespace Wedding.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Rsvp(RsvpViewModel viewModel)
         {
-            //TODO: check if someone with that name/email/number is already in
-            if (ModelState.IsValid)
+            bool replacedInfo = viewModel.ReplaceFillerInfo();
+            if (!replacedInfo && await _context.Guests.AnyAsync(x => x.GuestName == viewModel.Name || x.Email == viewModel.Email || x.PhoneNumber == viewModel.PhoneNumber))
             {
-                if (viewModel.Email == "jacob@lewinskitech.com")
-                {
-                    //Force to make new user if I RSVP for someone
-                    viewModel.Email = string.Empty;
-                    if (viewModel.PhoneNumber == "2562034011")
-                    {
-                        //Force to make new user if I RSVP for someone
-                        viewModel.PhoneNumber = string.Empty;
-                    }
-                }
-                else if (viewModel.PhoneNumber == "2562034011")
-                {
-                    //Force to make new user if I RSVP for someone
-                    viewModel.PhoneNumber = string.Empty;
-                }
-                else if (await _context.Guests.AnyAsync(x => x.GuestName == viewModel.Name || x.Email == viewModel.Email || x.PhoneNumber == viewModel.PhoneNumber))
-                {
-                    ModelState.AddModelError(string.Empty, "You have already submitted a RSVP. If you think this is wrong or need to change your RSVP please email jacob@lewinskitech.com");
-                }
+                ModelState.AddModelError(string.Empty, "You have already submitted a RSVP. If you think this is wrong or need to change your RSVP please email jacob@lewinskitech.com");
             }
+
             if (ModelState.IsValid)
             {
                 var password = Guid.NewGuid().ToString();
@@ -104,9 +87,7 @@ namespace Wedding.Controllers
                 await _context.SaveChangesAsync();
 
                 //TODO: sign user in and ask for more info (children, address, etc.)
-                //TODO: once emails are working enable a reset password email
                 //TODO: create page for guests to message the bride and groom
-                //TODO: show link for registry
                 var thankYou = new ThankYouViewModel(guest)
                 {
                     Url = Url.Action("ThankYou", "Guest")
@@ -115,8 +96,8 @@ namespace Wedding.Controllers
 
                 if (thankYou.Email != string.Empty)
                 {
-                    var body = await EmailService.RenderViewToStringAsync("ThankYou", thankYou, ControllerContext);
-                    await _email.SendConfirmationEmail(thankYou, body);
+                    await _email.SendConfirmationEmail(thankYou, ControllerContext);
+                    await _email.SendNotificationEmail(thankYou, ControllerContext);
                 }
 
                 return RedirectToAction(nameof(ThankYou), thankYou);
@@ -130,7 +111,7 @@ namespace Wedding.Controllers
             var guest = await _context.Guests.FindAsync(id);
             if (guest == null)
             {
-                return RedirectToAction("hacker", "home");
+                return RedirectToAction("Index", "Home");
             }
             return View(new ChangeViewModel(guest));
         }
@@ -138,8 +119,10 @@ namespace Wedding.Controllers
         [HttpPost]
         public async Task<IActionResult> Change(ChangeViewModel viewModel)
         {
+            viewModel.ReplaceFillerInfo();
             if (ModelState.IsValid)
             {
+
                 var guest = await _context.Guests.FindAsync(viewModel.UserId);
                 if (guest == null)
                 {
@@ -150,10 +133,11 @@ namespace Wedding.Controllers
                 guest.PhoneNumber = viewModel.PhoneNumber;
                 guest.Email = viewModel.Email;
                 guest.IsGoing = viewModel.NumberAdults + viewModel.NumberChildren > 0;
-                guest.GuestName = viewModel.GuestName;
+                guest.GuestName = viewModel.Name;
 
                 await _context.SaveChangesAsync();
 
+                //Redirect if it is an Admin changing someone else's response
                 if (User.IsInRole("Admin"))
                 {
                     return RedirectToAction("Index");
@@ -165,11 +149,40 @@ namespace Wedding.Controllers
                 };
                 thankYou.Url = Url.Action("ThankYou", "Guest", thankYou);
 
-                var body = await EmailService.RenderViewToStringAsync("ThankYou", thankYou, ControllerContext);
-                await _email.SendConfirmationEmail(thankYou, body);
+                if (thankYou.Email != null)
+                {
+                    var body = await EmailService.RenderViewToStringAsync("ThankYou", thankYou, ControllerContext);
+                    //await _email.SendConfirmationEmail(thankYou, body);
+                }
                 return RedirectToAction(nameof(ThankYou), thankYou);
             }
             return View(viewModel);
+        }
+
+
+        [Authorize(Roles = "Admin")]
+        public async Task<IActionResult> Delete(Guid id)
+        {
+            try
+            {
+                var guest = await _context.Guests.FindAsync(id);
+                var user = await _context.Users.FindAsync(id);
+                if (guest != null)
+                {
+                    _context.Guests.Remove(guest);
+                }
+                if (user != null)
+                {
+                    _context.Users.Remove(user);
+                }
+                await _context.SaveChangesAsync();
+            }
+            catch
+            {
+                return RedirectToAction(nameof(Change), id);
+            }
+
+            return RedirectToAction(nameof(Index));
         }
 
         public async Task<IActionResult> Note(Guid id)
@@ -177,7 +190,7 @@ namespace Wedding.Controllers
             var guest = await _context.Guests.FindAsync(id);
             if (guest == null)
             {
-                return RedirectToAction(nameof(HomeController.Hacker), "Home");
+                return RedirectToAction(nameof(HomeController.Index), "Home");
             }
             return View(new NoteViewModel { Id = id });
         }
@@ -201,6 +214,11 @@ namespace Wedding.Controllers
                 }
             }
             return RedirectToAction(nameof(ThankYou));
+        }
+
+        public IActionResult Notification(ThankYouViewModel viewModel)
+        {
+            return View(viewModel);
         }
 
         public IActionResult ThankYou(ThankYouViewModel viewModel)

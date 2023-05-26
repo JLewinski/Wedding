@@ -51,7 +51,7 @@ namespace Wedding.Services
                     Host = _options.Host,
                     Port = _options.Port,
                     DeliveryMethod = SmtpDeliveryMethod.Network,
-                    
+
                 };
                 return _smtpClient;
             }
@@ -68,6 +68,21 @@ namespace Wedding.Services
             _smtpClient?.Dispose();
         }
 
+        public async Task SendNotificationEmail(ThankYouViewModel guest, ControllerContext controllerContext)
+        {
+            var body = await RenderViewToStringAsync("Notification", guest, controllerContext);
+            char indicator = guest.IsComing ? 'Y' : 'N';
+            var message = new MailMessage
+            {
+                Subject = $"{guest.Name}: {indicator}",
+                From = new MailAddress("wedding@lewinskitech.com", "Jacob and Elisa"),
+                IsBodyHtml = true,
+                Body = body
+            };
+            message.To.Add("jacob@lewinskitech.com");
+            await SendMessage(message);
+        }
+
         public async Task SendConfirmationEmail(ThankYouViewModel guest, string body)
         {
             var message = new MailMessage
@@ -79,6 +94,12 @@ namespace Wedding.Services
             };
             message.To.Add(guest.Email);
             await SendMessage(message);
+        }
+
+        public async Task SendConfirmationEmail(ThankYouViewModel guest, ControllerContext controllerContext)
+        {
+            var body = await RenderViewToStringAsync("ThankYou", guest, controllerContext);
+            await SendConfirmationEmail(guest, body);
         }
 
         private async Task SendMessage(MailMessage message)
@@ -102,7 +123,8 @@ namespace Wedding.Services
             var razorViewEngine = serviceProvider.GetService(typeof(IRazorViewEngine)) as IRazorViewEngine;
             var tempDataProvider = serviceProvider.GetService(typeof(ITempDataProvider)) as ITempDataProvider;
 
-            if(razorViewEngine == null || tempDataProvider == null){
+            if (razorViewEngine == null || tempDataProvider == null)
+            {
                 throw new NullReferenceException("Could not find service");
             }
 

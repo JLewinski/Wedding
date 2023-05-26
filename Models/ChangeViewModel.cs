@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Wedding.Models
 {
-    public class ChangeViewModel
+    public class ChangeViewModel : IRsvpModel
     {
         public ChangeViewModel() { }
         public ChangeViewModel(Data.Guest guest)
@@ -11,7 +11,7 @@ namespace Wedding.Models
             UserId = guest.UserId;
             NumberAdults = guest.NumberAdults;
             NumberChildren = guest.NumberChildren;
-            GuestName = guest.GuestName;
+            Name = guest.GuestName;
             Email = guest.Email;
             PhoneNumber = guest.PhoneNumber;
             TempId = Guid.NewGuid();
@@ -29,7 +29,7 @@ namespace Wedding.Models
         public byte NumberChildren { get; set; }
         [Required]
         [DisplayName("Name")]
-        public string GuestName { get; set; } = null!;
+        public string Name { get; set; } = null!;
         [Required]
         [DataType(DataType.EmailAddress)]
         public string Email { get; set; } = null!;
@@ -37,6 +37,5 @@ namespace Wedding.Models
         [DisplayName("Phone Number")]
         [DataType(DataType.PhoneNumber)]
         public string PhoneNumber { get; set; } = null!;
-
     }
 }

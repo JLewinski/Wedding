@@ -1,168 +1,84 @@
 @model ThankYouViewModel
 @{
-    ViewData["Title"] = "Thank You for RSVP";
-    Layout = null;
+    ViewData["Title"] = "Thank You for your response";
+    Layout = "_LayoutEmail";
 }
+<div id="email">
+    <table align="right" role="presentation">
+        <tr>
+            <td>
+                <a class="subtle-link" href="https://jacobandelisa.com/guest/thankyou?GuestId=@Model.GuestId&Email=@Model.Email&Name=@Model.Name&IsComing=@Model.IsComing">View in Browser</a>
+            </td>
+        <tr>
+    </table>
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional //EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:v="urn:schemas-microsoft-com:vml" lang="en">
+    <table role="presentation" width="100%">
+        <tr>
 
-<head>
-    <link rel="stylesheet" type="text/css" hs-webfonts="true" href="https://fonts.googleapis.com/css?family=Lato|Lato:i,b,bi">
-    <title>Email template</title>
-    <meta property="og:title" content="Email template">
+            <td bgcolor="#65737e" align="center" style="color: white;">
 
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+                <img alt="Jacob and Elisa" src="https://jacobandelisa.com/dist/img/logo.email.png" width="200px" align="middle">
 
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+                <h1> Thank You! </h1>
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            </td>
+    </table>
 
-    <style type="text/css">
+    <table align="center" role="presentation" border="0" cellpadding="0" cellspacing="10px" style="padding: 30px 30px 30px 60px;">
+        <tr>
+            <td align="center">
+                @if (Model.IsComing)
+                {
+                    <h2>We can't wait to see you there!</h2>
+                    <p class="h3">
+                        If you are planning to travel and need a place to stay over night, we have a block of rooms at Holiday Inn Express & Suites Gadsden open for you to rent at room. Please click <a class="link" href="https://jacobandelisa.com/#hotel">here</a> for more information.
+                    </p>
+                }
+                else
+                {
+                    <h2>Sorry you won't be able to make it</h2>
+                    <p class="h3">
+                        We appreciate you letting us know and you will be missed. 
+                    </p>
+                }
 
-        a.link {
-            text-decoration: underline;
-            color: inherit;
-            font-weight: bold;
-            color: #253342;
-        }
+            </td>
+        </tr>
 
-        h1 {
-            font-size: 56px;
-        }
+    </table>
+    <table align="center" role="presentation" border="0" cellpadding="0" cellspacing="10px" style="padding: 30px 30px 30px 60px;">
+        <tr>
+            <td>
+                <div class="button">
+                    <a class="link" href="https://jacobandelisa.com/guest/note/@Model.GuestId">
+                        Write a note
+                    </a>
+                </div>
+            </td>
+            <td>
+                <div class="button">
+                    <a class="link" href="https://jacobandelisa.com/registry">
+                        View our Registry
+                    </a>
+                </div>
+            </td>
+        </tr>
+    </table>
 
-        h2 {
-            font-size: 28px;
-            font-weight: 900;
-        }
+    <table role="presentation" bgcolor="#EAF0F6" width="100%" style="margin-top: 50px; padding: 30px 30px 30px 60px; ">
+        <tr>
+            <td align="center">
+                <p>If for whatever reason you need to change your RSVP, you can change it by clicking <a class="link" href="https://jacobandelisa.com/guest/change/@Model.GuestId">here</a></p>
+            </td>
+        </tr>
+    </table>
 
-        .h3 {
-            font-size: 14px;
-        }
-
-        p {
-            font-weight: 100;
-        }
-
-        td {
-            vertical-align: top;
-        }
-
-        #email {
-            margin: auto;
-            width: 600px;
-            background-color: white;
-        }
-
-        .button {
-            font: inherit;
-            background-color: #E27A53;
-            border: none;
-            padding: 10px;
-            margin: 10px;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            font-weight: 900;
-            color: white;
-            border-radius: 5px;
-        }
-
-            .button a {
-                color: white;
-            }
-
-        .subtle-link {
-            font-size: 9px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: #CBD6E2;
-        }
-    </style>
-
-</head>
-
-<body bgcolor="#F5F8FA" style="width: 100%; margin: auto 0; padding:0; font-family:Lato, sans-serif; font-size:18px; color:#33475B; word-break:break-word">
-
-    <div id="email">
-        <table align="right" role="presentation">
-            <tr>
-                <td>
-                    <a class="subtle-link" href="#">View in Browser</a>
-                </td>
-            <tr>
-        </table>
-
-        <table role="presentation" width="100%">
-            <tr>
-
-                <td bgcolor="#65737e" align="center" style="color: white;">
-
-                    <img alt="Jacob and Elisa" src="https://jacobandelisa.com/dist/img/logo.email.png" width="200px" align="middle">
-
-                    <h1> Thank You! </h1>
-
-                </td>
-        </table>
-
-        
-
-        <table align="center" role="presentation" border="0" cellpadding="0" cellspacing="10px" style="padding: 30px 30px 30px 60px;">
-            <tr>
-                <td align="center">
-                    @if (Model.IsComing)
-                    {
-                        <h2>We can't wait to see you there!</h2>
-                        <p class="h3">
-                            If you are planning to travel and need a place to stay over night, we have a block of rooms at Holiday Inn Express & Suites Gadsden open for you to rent at room. Please click <a class="link" href="https://jacobandelisa.com/#hotel">here</a> for more information.
-                        </p>
-                    }
-                    else
-                    {
-                        <h2>Sorry you won't be able to make it</h2>
-                        <p class="h3">
-                            We appreciate you letting us know and you will be missed. 
-                        </p>
-                    }
-
-                </td>
-            </tr>
-
-        </table>
-        <table align="center" role="presentation" border="0" cellpadding="0" cellspacing="10px" style="padding: 30px 30px 30px 60px;">
-            <tr>
-                <td>
-                    <div class="button">
-                        <a class="link" href="https://jacobandelisa.com/guest/note/@Model.GuestId">
-                            Write a note
-                        </a>
-                    </div>
-                </td>
-                <td>
-                    <div class="button">
-                        <a class="link" href="https://jacobandelisa.com/registry">
-                            View our Registry
-                        </a>
-                    </div>
-                </td>
-            </tr>
-        </table>
-
-        <table role="presentation" bgcolor="#EAF0F6" width="100%" style="margin-top: 50px; padding: 30px 30px 30px 60px; ">
-            <tr>
-                <td align="center">
-                    <p>If for whatever reason you need to change your RSVP, you can change it by clicking <a class="link" href="https://jacobandelisa.com/guest/change/@Model.GuestId">here</a></p>
-                </td>
-            </tr>
-        </table>
-
-        <table role="presentation" bgcolor="#F5F8FA" width="100%">
-            <tr>
-                <td align="left" style="padding: 30px 30px;">
-                    <p style="color:#99ACC2"> Made by Jacob with lots of &hearts; for Elisa</p>
-                    <a class="subtle-link" href="https://jacobandelisa.com/unsubscribe/@Model.Email}"> Unsubscribe </a>
-                </td>
-            </tr>
-        </table>
-    </div>
-</body>
-</html>
+    <table role="presentation" bgcolor="#F5F8FA" width="100%">
+        <tr>
+            <td align="left" style="padding: 30px 30px;">
+                <p style="color:#99ACC2"> Made by Jacob with lots of &hearts; for Elisa</p>
+                <a class="subtle-link" href="https://jacobandelisa.com/unsubscribe/@Model.Email}"> Unsubscribe </a>
+            </td>
+        </tr>
+    </table>
+</div>

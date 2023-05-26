@@ -7,7 +7,7 @@ namespace Wedding.Models
         public ThankYouViewModel() { }
         public ThankYouViewModel(ChangeViewModel vm)
         {
-            Name = vm.GuestName;
+            Name = vm.Name;
             GuestId = vm.UserId;
             Email = vm.Email;
             IsComing = vm.NumberChildren + vm.NumberAdults > 0;
