@@ -25,22 +25,14 @@ namespace Wedding.Controllers
         {
             IQueryable<Guest> guestQuery = _context.Guests;
 
-            switch (order)
+            guestQuery = order switch
             {
-                case 0:
-                    guestQuery = guestQuery.OrderByDescending(x => x.DateModified).ThenBy(x => x.GuestName);
-                    break;
-                case 1:
-                    guestQuery = guestQuery.OrderBy(x => x.GuestName);
-                    break;
-                case 2:
-                    guestQuery = guestQuery.OrderByDescending(x => x.IsGoing).ThenBy(x => x.GuestName);
-                    break;
-                default:
-                    guestQuery = guestQuery.OrderByDescending(x => x.DateModified)
-                        .ThenBy(x => x.GuestName);
-                    break;
-            }
+                0 => guestQuery.OrderByDescending(x => x.DateModified).ThenBy(x => x.GuestName),
+                1 => guestQuery.OrderBy(x => x.GuestName),
+                2 => guestQuery.OrderByDescending(x => x.IsGoing).ThenBy(x => x.GuestName),
+                _ => guestQuery.OrderByDescending(x => x.DateModified)
+                                        .ThenBy(x => x.GuestName),
+            };
 
             return View(await guestQuery.ToListAsync());
         }
