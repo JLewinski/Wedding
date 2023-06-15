@@ -17,12 +17,23 @@
             <h3 class="header"><strong>Monday July 3<sup>rd</sup></strong></h3>
             <div class="row d-none d-md-block">
                 <div class="col">
-                    <h5>Ceremony <span class="time">2:30PM - 3:30PM</span></h5>
+                    <h5>Adoration and Confession<span class="time">1:30PM - 2:30PM</span></h5>
                     <p>Located at Corpus Christi in Oneonta, AL</p>
                 </div>
                 <div class="col-12 col-md-5">
                     <a class="btn btn-hero btn-small map-toggle-btn" data-show="#church-map" data-hide="#venue-map">
                         <i class="fa fa-map-marker" style="padding-right: 10px;"></i>Show Church
+                    </a>
+                </div>
+            </div>
+            <div class="row d-none d-md-block mt-5">
+                <div class="col">
+                    <h5>Ceremony <span class="time">2:30PM - 3:30PM</span></h5>
+                    <p>Located at Corpus Christi in Oneonta, AL</p>
+                </div>
+                <div class="col-12 col-md-5">
+                    <a class="btn btn-hero btn-small dress-code-btn" data-bs-toggle="modal" data-bs-target="#dressCodeModal">
+                        <i class="fa fa-children" style="padding-right: 10px;"></i>Dress Code
                     </a>
                 </div>
             </div>
@@ -57,4 +68,21 @@
         </div>
 
     </div>
+</div>
+
+<div class="modal fade" tabindex="-1" id="dressCodeModal">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Dress Code for Corpus Christi</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body text-center">
+        <img src="~/dist/img/modesty.png" class="img-fluid" alt="Dress Code" />
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
 </div>
