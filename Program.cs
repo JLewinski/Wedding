@@ -1,7 +1,6 @@
 using ElmahCore.Mvc;
 using ElmahCore.Sql;
 using Microsoft.AspNetCore.Authentication.Cookies;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Wedding.Data;
 using Wedding.Services;
@@ -32,6 +31,7 @@ builder.Services.AddElmah<SqlErrorLog>(options =>
     options.Path = "/Elmah";
     options.OnPermissionCheck = context => context.User.IsInRole("Admin");
     options.ConnectionString = connectionString;
+    options.FiltersConfig = "./elmahFilter.xml";
 });
 
 var app = builder.Build();

@@ -1,0 +1,5 @@
+<errorFilter>
+    <test>
+        <equal binding="HttpStatusCode" value="404" type="Int32" />
+    </test>
+</errorFilter>
