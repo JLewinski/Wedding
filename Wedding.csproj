@@ -36,4 +36,14 @@
     <None Include="wwwroot\src\**" Watch="false" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Remove="elmahFilter.xml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="elmahFilter.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
 </Project>
